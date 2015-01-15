@@ -120,5 +120,38 @@ namespace Portkit.Core.Extensions
             input = input.Trim();
             return input.StartsWith("<") && input.EndsWith(">");
         }
+
+        /// <summary>
+        /// Takes a substring between two anchor strings (or the end of the string if that anchor is null)
+        /// </summary>
+        /// <param name="data">String to operate on</param>
+        /// <param name="from">Optional string to search after</param>
+        /// <param name="until">Optional string to search before</param>
+        /// <param name="comparison">Optional comparison for the search</param>
+        /// <returns>Substring based on the search</returns>
+        public static string Extract(this string data, string from = null, string until = null, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
+        {
+            var fromLength = (from ?? string.Empty).Length;
+            var startIndex = !string.IsNullOrEmpty(from)
+                ? data.IndexOf(from, comparison) + fromLength
+                : 0;
+
+            if (startIndex < fromLength)
+            {
+                throw new ArgumentException("from: Failed to find an instance of the first anchor");
+            }
+
+            var endIndex = !string.IsNullOrEmpty(until)
+            ? data.IndexOf(until, startIndex, comparison)
+            : data.Length;
+
+            if (endIndex < 0)
+            {
+                throw new ArgumentException("until: Failed to find an instance of the last anchor");
+            }
+
+            var subString = data.Substring(startIndex, endIndex - startIndex);
+            return subString;
+        }
     }
 }
