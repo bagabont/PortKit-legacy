@@ -28,7 +28,7 @@ namespace Portkit.ComponentModel.Presenter
         {
             if (UIDispatcher == null)
             {
-                throw new InvalidOperationException("Cannot raise event on UI thread. UIDispatcher is null.");
+                base.OnPropertyChanged(propertyName);
             }
 
             if (!UIDispatcher.HasThreadAccess)
