@@ -29,6 +29,7 @@ namespace Portkit.ComponentModel.Presenter
             if (UIDispatcher == null)
             {
                 base.OnPropertyChanged(propertyName);
+				return;
             }
 
             if (!UIDispatcher.HasThreadAccess)
