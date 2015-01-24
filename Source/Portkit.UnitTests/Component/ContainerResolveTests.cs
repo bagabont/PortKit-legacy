@@ -1,8 +1,8 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Portkit.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Portkit.ComponentModel.Communication;
 
 namespace Portkit.UnitTests.Component
 {
@@ -20,6 +20,33 @@ namespace Portkit.UnitTests.Component
 
             Assert.IsNotNull(service);
             Assert.IsInstanceOfType(service, typeof(TestMockOne));
+        }
+
+        [TestMethod]
+        public void ResolveInstanceEqualTest()
+        {
+            using (var container = new PortableContainer())
+            {
+                var instance = new TestMockOne();
+                container.Register<ITestMock, TestMockOne>(instance);
+
+                Assert.AreSame(instance, container.Resolve<ITestMock>());
+            }
+        }
+
+        [TestMethod]
+        public void ResolveInstanceNotEqualTest()
+        {
+            using (var container = new PortableContainer())
+            {
+                var instance = new TestMockOne();
+
+                container.Register<ITestMock, TestMockOne>(new TestMockOne());
+
+                var resolved = container.Resolve<ITestMock>();
+
+                Assert.AreNotSame(instance, resolved);
+            }
         }
 
         [TestMethod]

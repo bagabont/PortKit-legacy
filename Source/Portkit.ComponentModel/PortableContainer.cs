@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-#if UNIVERSAL
-using System.Runtime.ExceptionServices;
-#endif
 using Portkit.Core.Collections;
 using Portkit.Core.Extensions;
 
-namespace Portkit.ComponentModel.Communication
+namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Represents a fast and easy to use IoC service container, that implements <see cref="IServiceProvider"/>.
@@ -38,6 +35,19 @@ namespace Portkit.ComponentModel.Communication
             where TImplementation : TComponent
         {
             _register.Add(typeof(TComponent), typeof(TImplementation));
+        }
+        /// <summary>
+        /// Registers a component to the container and specifies it's implementation.
+        /// </summary>
+        /// <typeparam name="TComponent">Type of the component.</typeparam>
+        /// <typeparam name="TImplementation">Type of the component implementation.</typeparam>
+        /// <param name="instance">Instance.</param>
+        public void Register<TComponent, TImplementation>(object instance)
+            where TComponent : class
+            where TImplementation : TComponent
+        {
+            Register<TComponent, TImplementation>();
+            _instances.Add(typeof(TImplementation), instance);
         }
 
         /// <summary>
@@ -160,32 +170,23 @@ namespace Portkit.ComponentModel.Communication
                 throw new ArgumentNullException("component");
             }
 
-            if (component
-#if !UNIVERSAL
-.GetTypeInfo()
-#endif
-.IsGenericType)
+            if (component.GetTypeInfo().IsGenericType)
             {
                 Type gtd = component.GetGenericTypeDefinition();
-#if UNIVERSAL
-                Type argument = component.GetGenericArguments()[0];
-#else
                 Type argument = component.GetTypeInfo().GenericTypeArguments[0];
-#endif
 
-#if UNIVERSAL
-                if (gtd.IsInterface && typeof(IEnumerable<>).IsAssignableFrom(gtd))
-                    return ResolveAll(argument).CastSlow(argument);
-#else
                 TypeInfo info = gtd.GetTypeInfo();
                 if (info.IsInterface && typeof(IEnumerable<>).GetTypeInfo().IsAssignableFrom(info))
+                {
                     return ResolveAll(argument).CastSlow(argument);
-#endif
+                }
             }
             Type implementation = _register[component].FirstOrDefault();
 
             if (implementation == null)
+            {
                 throw new InvalidOperationException(String.Format("Component {0} is not registered.", (component)));
+            }
 
             return ResolveInstance(component, implementation);
         }
@@ -233,30 +234,18 @@ namespace Portkit.ComponentModel.Communication
             catch (TargetInvocationException ex)
             {
                 Exception innerException = ex.InnerException;
-
-#if UNIVERSAL
-                FieldInfo stackTraceField = typeof(Exception).GetField("_remoteStackTraceString",
-                    BindingFlags.Instance | BindingFlags.NonPublic);
-                stackTraceField.SetValue(innerException, innerException.StackTrace);
-#else
                 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(innerException).Throw();
-#endif
                 throw innerException;
             }
         }
 
         private static ConstructorInfo SelectConstructor(Type component, Type implementation)
         {
-#if UNIVERSAL
-            ConstructorInfo constructor =
-                implementation.GetConstructors().OrderByDescending(c => c.GetParameters().Length).FirstOrDefault();
-#else
             ConstructorInfo constructor =
                 implementation.GetTypeInfo()
                     .DeclaredConstructors.Where(c => c.IsPublic && !c.IsStatic)
                     .OrderByDescending(c => c.GetParameters().Length)
                     .FirstOrDefault();
-#endif
             if (constructor == null)
             {
                 throw new InvalidOperationException(
@@ -265,23 +254,6 @@ namespace Portkit.ComponentModel.Communication
 
             return constructor;
         }
-
-#if !PCL_45
-        private class HashSet<T>
-        {
-            private readonly IDictionary<T, bool> _data = new Dictionary<T, bool>();
-
-            public void Add(T o)
-            {
-                _data.Add(o, true);
-            }
-
-            public bool Contains(T o)
-            {
-                return _data.ContainsKey(o);
-            }
-        }
-#endif
 
         #region IDisposable Members
 

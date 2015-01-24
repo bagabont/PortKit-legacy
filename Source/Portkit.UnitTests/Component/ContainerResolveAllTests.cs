@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Portkit.ComponentModel;
 using Portkit.ComponentModel.Communication;
 
 namespace Portkit.UnitTests.Component
