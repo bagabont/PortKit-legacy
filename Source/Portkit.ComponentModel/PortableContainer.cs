@@ -171,17 +171,6 @@ namespace Portkit.ComponentModel
             return ResolveAll(typeof(T)).Cast<T>();
         }
 
-        // Summary:
-        //     
-        //
-        // Parameters:
-        //   serviceType:
-        //     
-        //
-        // Returns:
-        //     A service object of type serviceType.-or- null if there is no service object
-        //     of type serviceType.
-
         /// <summary>
         /// Gets the service object of the specified type.
         /// </summary>
@@ -289,11 +278,11 @@ namespace Portkit.ComponentModel
         /// Releases all container resources.
         /// </summary>
         /// <param name="disposing"></param>
-        public void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
-            lock (this)
+            if (disposing && !_isDisposed)
             {
-                if (disposing && !_isDisposed)
+                lock (this)
                 {
                     foreach (IDisposable instance in _instances.Values)
                     {
@@ -301,9 +290,7 @@ namespace Portkit.ComponentModel
                     }
                     _register.Clear();
                     _instances.Clear();
-                }
-                if (disposing && !_isDisposed)
-                {
+
                     _isDisposed = true;
                     GC.SuppressFinalize(this);
                 }

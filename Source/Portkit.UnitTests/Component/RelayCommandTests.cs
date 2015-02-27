@@ -1,9 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Portkit.ComponentModel.Presenter;
 
 namespace Portkit.UnitTests.Component
 {
-    [TestClass]
+    [TestClass, ExcludeFromCodeCoverage]
     public class RelayCommandTests
     {
         [TestMethod]

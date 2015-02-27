@@ -1,9 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Portkit.Core.Extensions;
 
 namespace Portkit.UnitTests.Core
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class StringExTests
     {
         [TestMethod]

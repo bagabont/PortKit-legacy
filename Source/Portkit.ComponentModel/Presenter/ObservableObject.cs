@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace Portkit.ComponentModel
+namespace Portkit.ComponentModel.Presenter
 {
     /// <summary>
     /// Provides an abstract implementation of the INotifyPropertyChanged interface.

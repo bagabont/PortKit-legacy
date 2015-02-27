@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Portkit.Core;
 
 namespace Portkit.UnitTests.Core
 {
+    [ExcludeFromCodeCoverage]
     public static class StaticTestClass
     {
         private static readonly PortableStorage Storage = new PortableStorage(new Dictionary<string, object>());
@@ -33,7 +35,7 @@ namespace Portkit.UnitTests.Core
         }
     }
 
-    [TestClass]
+    [TestClass, ExcludeFromCodeCoverage]
     public class PortableStorageTests
     {
         [TestMethod]

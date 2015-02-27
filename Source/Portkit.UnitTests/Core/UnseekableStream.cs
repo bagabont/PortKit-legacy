@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
 namespace Portkit.UnitTests.Core
 {
+    [ExcludeFromCodeCoverage]
     internal sealed class UnseekableStream : MemoryStream
     {
         public override bool CanSeek

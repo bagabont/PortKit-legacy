@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.ComponentModel;
 using Portkit.ComponentModel.Presenter;
@@ -6,7 +7,7 @@ using Portkit.ComponentModel.Threading;
 
 namespace Portkit.UnitTests.Component
 {
-    [TestClass]
+    [TestClass, ExcludeFromCodeCoverage]
     public class PresenterObjectTests
     {
         private Mock<IThreadDispatcher> _dispatcherMock;

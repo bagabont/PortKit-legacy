@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Portkit.ComponentModel.Communication
+namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Provides basic decoupled messaging.
@@ -11,7 +11,7 @@ namespace Portkit.ComponentModel.Communication
     public sealed class MessageBus : IMessageBus
     {
         private readonly Dictionary<Type, List<Object>> _subscribers;
-        private static readonly object _syncRoot = new Object();
+        private static readonly object SyncRoot = new Object();
         private static volatile MessageBus _default;
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Portkit.ComponentModel.Communication
             {
                 if (_default == null)
                 {
-                    lock (_syncRoot)
+                    lock (SyncRoot)
                     {
                         if (_default == null)
                         {

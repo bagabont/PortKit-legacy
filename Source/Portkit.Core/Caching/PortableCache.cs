@@ -14,7 +14,7 @@ namespace Portkit.Core.Caching
 
         private readonly IDictionary<object, CacheItem> _cache;
 
-        private static readonly object _syncLock = new Object();
+        private static readonly object SyncLock = new Object();
 
         private const int MONITOR_WAIT_DEFAULT = 1000;
         private const int MONITOR_WAIT_TO_UPDATE_SLIDING = 500;
@@ -72,7 +72,7 @@ namespace Portkit.Core.Caching
         {
             get
             {
-                if (!Monitor.TryEnter(_syncLock, MONITOR_WAIT_DEFAULT))
+                if (!Monitor.TryEnter(SyncLock, MONITOR_WAIT_DEFAULT))
                 {
                     return -1;
                 }
@@ -83,7 +83,7 @@ namespace Portkit.Core.Caching
                 }
                 finally
                 {
-                    Monitor.Exit(_syncLock);
+                    Monitor.Exit(SyncLock);
                 }
             }
         }
@@ -139,7 +139,7 @@ namespace Portkit.Core.Caching
         /// <param name="policy">Item's caching policy.</param>
         public void Add<TKey, TValue>(TKey key, TValue value, CacheItemPolicy policy) where TValue : class
         {
-            if (!Monitor.TryEnter(_syncLock, MONITOR_WAIT_DEFAULT))
+            if (!Monitor.TryEnter(SyncLock, MONITOR_WAIT_DEFAULT))
             {
                 return;
             }
@@ -178,7 +178,7 @@ namespace Portkit.Core.Caching
             }
             finally
             {
-                Monitor.Exit(_syncLock);
+                Monitor.Exit(SyncLock);
             }
             OnCacheItemAdded(_cache[key]);
         }
@@ -190,7 +190,7 @@ namespace Portkit.Core.Caching
         /// <returns>All keys, of a given type, stored in the cache.</returns>
         public IEnumerable<TKey> Keys<TKey>()
         {
-            if (!Monitor.TryEnter(_syncLock, MONITOR_WAIT_DEFAULT))
+            if (!Monitor.TryEnter(SyncLock, MONITOR_WAIT_DEFAULT))
             {
                 return Enumerable.Empty<TKey>();
             }
@@ -201,7 +201,7 @@ namespace Portkit.Core.Caching
             }
             finally
             {
-                Monitor.Exit(_syncLock);
+                Monitor.Exit(SyncLock);
             }
         }
 
@@ -211,7 +211,7 @@ namespace Portkit.Core.Caching
         /// <returns>All keys stored in the cache.</returns>
         public IEnumerable<object> Keys()
         {
-            if (!Monitor.TryEnter(_syncLock, MONITOR_WAIT_DEFAULT))
+            if (!Monitor.TryEnter(SyncLock, MONITOR_WAIT_DEFAULT))
             {
                 return Enumerable.Empty<object>();
             }
@@ -221,7 +221,7 @@ namespace Portkit.Core.Caching
             }
             finally
             {
-                Monitor.Exit(_syncLock);
+                Monitor.Exit(SyncLock);
             }
         }
 
@@ -254,7 +254,7 @@ namespace Portkit.Core.Caching
                 }
                 if (item.SlidingExpiration != CacheItemPolicy.NoSliding)
                 {
-                    if (Monitor.TryEnter(_syncLock, MONITOR_WAIT_TO_UPDATE_SLIDING))
+                    if (Monitor.TryEnter(SyncLock, MONITOR_WAIT_TO_UPDATE_SLIDING))
                     {
                         try
                         {
@@ -262,7 +262,7 @@ namespace Portkit.Core.Caching
                         }
                         finally
                         {
-                            Monitor.Exit(_syncLock);
+                            Monitor.Exit(SyncLock);
                         }
                     }
                 }
@@ -280,7 +280,7 @@ namespace Portkit.Core.Caching
         /// <param name="item">Item to be imported.</param>
         public void Import(CacheItem item)
         {
-            lock (_syncLock)
+            lock (SyncLock)
             {
                 CacheItem cachedItem;
                 if (_cache.TryGetValue(item.Key, out cachedItem))
@@ -303,7 +303,7 @@ namespace Portkit.Core.Caching
         public bool Remove<TKey>(TKey key)
         {
             CacheItem cachedItem;
-            lock (_syncLock)
+            lock (SyncLock)
             {
                 if (_cache.TryGetValue(key, out cachedItem))
                 {
@@ -323,7 +323,7 @@ namespace Portkit.Core.Caching
         /// <returns>Number of expired items that have been removed.</returns>
         public int PurgeExpiredItems()
         {
-            if (!Monitor.TryEnter(_syncLock, MONITOR_WAIT_DEFAULT))
+            if (!Monitor.TryEnter(SyncLock, MONITOR_WAIT_DEFAULT))
             {
                 return -1;
             }
@@ -345,7 +345,7 @@ namespace Portkit.Core.Caching
             }
             finally
             {
-                Monitor.Exit(_syncLock);
+                Monitor.Exit(SyncLock);
             }
         }
 
@@ -355,7 +355,7 @@ namespace Portkit.Core.Caching
         /// <returns></returns>
         public int PurgeNormalPriorities()
         {
-            if (Monitor.TryEnter(_syncLock, MONITOR_WAIT_DEFAULT))
+            if (Monitor.TryEnter(SyncLock, MONITOR_WAIT_DEFAULT))
             {
                 try
                 {
@@ -368,7 +368,7 @@ namespace Portkit.Core.Caching
                 }
                 finally
                 {
-                    Monitor.Exit(_syncLock);
+                    Monitor.Exit(SyncLock);
                 }
             }
             return -1;
@@ -380,7 +380,7 @@ namespace Portkit.Core.Caching
         /// <returns>Number of items that have been removed.</returns>
         public int Clear()
         {
-            if (!Monitor.TryEnter(_syncLock, MONITOR_WAIT_DEFAULT))
+            if (!Monitor.TryEnter(SyncLock, MONITOR_WAIT_DEFAULT))
             {
                 return -1;
             }
@@ -390,7 +390,7 @@ namespace Portkit.Core.Caching
             }
             finally
             {
-                Monitor.Exit(_syncLock);
+                Monitor.Exit(SyncLock);
             }
         }
 
@@ -408,7 +408,7 @@ namespace Portkit.Core.Caching
             {
                 throw new ArgumentNullException("key");
             }
-            lock (_syncLock)
+            lock (SyncLock)
             {
                 CacheItem item;
                 if (_cache.TryGetValue(key, out item) && !item.HasExpired)

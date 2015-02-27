@@ -56,10 +56,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Component\ContainerRemoveAllTest.cs" />
-    <Compile Include="Component\ContainerResolveAllTests.cs" />
-    <Compile Include="Component\ContainerResolveTests.cs" />
-    <Compile Include="Component\ContainerTestServices.cs" />
+    <Compile Include="Component\ContainerTests.cs" />
+    <Compile Include="Mocks.cs" />
     <Compile Include="Component\PresenterObjectTests.cs" />
     <Compile Include="Component\RelayCommandTests.cs" />
     <Compile Include="Core\CollectionExTests.cs" />

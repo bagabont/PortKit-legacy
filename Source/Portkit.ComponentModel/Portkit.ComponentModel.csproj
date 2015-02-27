@@ -45,10 +45,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Communication\IMessageBus.cs" />
+    <Compile Include="IMessageBus.cs" />
     <Compile Include="Presenter\IPropertyValidation.cs" />
-    <Compile Include="Communication\MessageBus.cs" />
-    <Compile Include="ObservableObject.cs" />
+    <Compile Include="MessageBus.cs" />
+    <Compile Include="Presenter\ObservableObject.cs" />
     <Compile Include="PortableContainer.cs" />
     <Compile Include="Presenter\PresenterObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="Presenter\RelayCommand.cs" />
     <Compile Include="Presenter\RelayCommandGeneric.cs" />
     <Compile Include="Threading\IThreadDispatcher.cs" />
-    <Compile Include="Threading\PortableDispatcher.cs" />
+    <Compile Include="Threading\ContextDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -8,6 +8,7 @@ namespace Portkit.UnitTests.Component
     {
 
     }
+
     internal class TestMockOne : ITestMock
     {
         public string Id { get; set; }

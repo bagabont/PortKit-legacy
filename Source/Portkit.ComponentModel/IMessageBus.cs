@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Portkit.ComponentModel.Communication
+namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Provides basic decoupled messaging.
