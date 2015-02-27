@@ -151,9 +151,6 @@ namespace Portkit.UnitTests.Component
             Assert.IsTrue(services.Count == 2);
 
             _container.RemoveAll<ITestMock>();
-
-            Assert.IsTrue(services[0].IsDisposed);
-            Assert.IsTrue(services[1].IsDisposed);
         }
     }
 }

@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Communication\IMessageBus.cs" />
     <Compile Include="Presenter\IPropertyValidation.cs" />
-    <Compile Include="IStateDisposable.cs" />
     <Compile Include="Communication\MessageBus.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="PortableContainer.cs" />
@@ -56,7 +55,6 @@
     <Compile Include="Presenter\PropertyValidation.cs" />
     <Compile Include="Presenter\RelayCommand.cs" />
     <Compile Include="Presenter\RelayCommandGeneric.cs" />
-    <Compile Include="StateDisposable.cs" />
     <Compile Include="Threading\IThreadDispatcher.cs" />
     <Compile Include="Threading\PortableDispatcher.cs" />
   </ItemGroup>

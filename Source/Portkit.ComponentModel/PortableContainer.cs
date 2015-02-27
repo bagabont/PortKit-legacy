@@ -10,11 +10,36 @@ namespace Portkit.ComponentModel
     /// <summary>
     /// Represents a fast and easy to use IoC service container, that implements <see cref="IServiceProvider"/>.
     /// </summary>
-    public class PortableContainer : StateDisposable, IServiceProvider
+    public class PortableContainer : IServiceProvider, IDisposable
     {
+        private static readonly object SyncLock = new object();
+        private static PortableContainer _default;
+
         private readonly GroupedEnumerable<Type, Type> _register = new GroupedEnumerable<Type, Type>();
         private readonly Dictionary<Type, object> _instances = new Dictionary<Type, object>();
         private readonly HashSet<KeyValuePair<Type, Type>> _transients = new HashSet<KeyValuePair<Type, Type>>();
+
+        /// <summary>
+        /// Gets the default instance of the IoC service container.
+        /// </summary>
+        public PortableContainer Default
+        {
+            get
+            {
+                if (_default == null)
+                {
+                    lock (SyncLock)
+                    {
+                        if (_default == null)
+                        {
+                            _default = new PortableContainer();
+                        }
+                    }
+                }
+
+                return _default;
+            }
+        }
 
         /// <summary>
         /// Registers a component to the container.
@@ -36,6 +61,7 @@ namespace Portkit.ComponentModel
         {
             _register.Add(typeof(TComponent), typeof(TImplementation));
         }
+
         /// <summary>
         /// Registers a component to the container and specifies it's implementation.
         /// </summary>
@@ -257,22 +283,47 @@ namespace Portkit.ComponentModel
 
         #region IDisposable Members
 
+        private bool _isDisposed;
+
         /// <summary>
         /// Releases all container resources.
         /// </summary>
         /// <param name="disposing"></param>
-        public override void Dispose(bool disposing)
+        public void Dispose(bool disposing)
         {
-            if (disposing && !IsDisposed)
+            lock (this)
             {
-                foreach (IDisposable instance in _instances.Values)
+                if (disposing && !_isDisposed)
                 {
-                    instance.Dispose();
+                    foreach (IDisposable instance in _instances.Values)
+                    {
+                        instance.Dispose();
+                    }
+                    _register.Clear();
+                    _instances.Clear();
                 }
-                _register.Clear();
-                _instances.Clear();
+                if (disposing && !_isDisposed)
+                {
+                    _isDisposed = true;
+                    GC.SuppressFinalize(this);
+                }
             }
-            base.Dispose(disposing);
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        /// <summary>
+        /// Releases resources before the object is reclaimed by garbage collection.
+        /// </summary>
+        ~PortableContainer()
+        {
+            Dispose(false);
         }
 
         #endregion

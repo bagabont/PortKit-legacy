@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Portkit.ComponentModel;
 
 namespace Portkit.UnitTests.Component
 {
-    internal interface ITestMock : IStateDisposable
+    internal interface ITestMock : IDisposable
     {
-    }
 
+    }
     internal class TestMockOne : ITestMock
     {
         public string Id { get; set; }

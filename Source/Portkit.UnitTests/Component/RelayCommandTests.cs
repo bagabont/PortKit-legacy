@@ -23,12 +23,7 @@ namespace Portkit.UnitTests.Component
         public void RelayCommandCanExecuteTest()
         {
             bool hasExecuted = false;
-            var command = new RelayCommand(
-                () =>
-                {
-                    hasExecuted = true;
-                },
-                _ => false);
+            var command = new RelayCommand(() => { hasExecuted = true; }, _ => false);
             command.Execute(null);
 
             Assert.IsFalse(command.CanExecute(null));

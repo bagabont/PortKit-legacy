@@ -27,7 +27,9 @@ namespace Portkit.Core.Collections
                 }
 
                 if (!_items.ContainsKey(key))
+                {
                     _items[key] = new List<TValue>();
+                }
 
                 return _items[key];
             }

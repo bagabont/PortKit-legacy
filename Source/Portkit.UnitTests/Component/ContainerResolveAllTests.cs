@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -16,7 +17,7 @@ namespace Portkit.UnitTests.Component
         {
             _container.Register<ITestMock, TestMockOne>();
 
-            List<ITestMock> services = _container.ResolveAll<ITestMock>().ToList();
+            var services = _container.ResolveAll<ITestMock>().ToList();
 
             Assert.IsNotNull(services);
             Assert.IsTrue(services.Count == 1);
