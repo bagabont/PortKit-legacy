@@ -51,6 +51,17 @@ namespace Portkit.ComponentModel
         }
 
         /// <summary>
+        /// Registers a component to the container.
+        /// </summary>
+        /// <typeparam name="TComponent">Type of the component.</typeparam>
+        /// <param name="instance">Instance.</param>
+        public void Register<TComponent>(TComponent instance) where TComponent : class
+        {
+            _register.Add(typeof(TComponent), typeof(TComponent));
+            _instances.Add(typeof(TComponent), instance);
+        }
+
+        /// <summary>
         /// Registers a component to the container and specifies it's implementation.
         /// </summary>
         /// <typeparam name="TComponent">Type of the component.</typeparam>
@@ -68,7 +79,7 @@ namespace Portkit.ComponentModel
         /// <typeparam name="TComponent">Type of the component.</typeparam>
         /// <typeparam name="TImplementation">Type of the component implementation.</typeparam>
         /// <param name="instance">Instance.</param>
-        public void Register<TComponent, TImplementation>(object instance)
+        public void Register<TComponent, TImplementation>(TComponent instance)
             where TComponent : class
             where TImplementation : TComponent
         {

@@ -23,7 +23,7 @@ namespace Portkit.UnitTests.Component
         }
 
         [TestMethod]
-        public void ResolveInstanceEqualTest()
+        public void ResolveComponentImplementationInstanceEqualTest()
         {
             using (var container = new PortableContainer())
             {
@@ -35,13 +35,40 @@ namespace Portkit.UnitTests.Component
         }
 
         [TestMethod]
-        public void ResolveInstanceNotEqualTest()
+        public void ResolveComponentImplementationInstanceNotEqualTest()
         {
             using (var container = new PortableContainer())
             {
                 var instance = new TestMockOne();
 
                 container.Register<ITestMock, TestMockOne>(new TestMockOne());
+
+                var resolved = container.Resolve<ITestMock>();
+
+                Assert.AreNotSame(instance, resolved);
+            }
+        }
+
+        [TestMethod]
+        public void ResolveImplementationInstanceEqualTest()
+        {
+            using (var container = new PortableContainer())
+            {
+                var instance = new TestMockOne();
+                container.Register<ITestMock>(instance);
+
+                Assert.AreSame(instance, container.Resolve<ITestMock>());
+            }
+        }
+
+        [TestMethod]
+        public void ResolveImplementationInstanceNotEqualTest()
+        {
+            using (var container = new PortableContainer())
+            {
+                var instance = new TestMockOne();
+
+                container.Register<ITestMock>(new TestMockOne());
 
                 var resolved = container.Resolve<ITestMock>();
 
@@ -160,6 +187,7 @@ namespace Portkit.UnitTests.Component
 
             container.RemoveAll<ITestMock>();
         }
+
         [TestMethod]
         public void RemovesAllTest()
         {
