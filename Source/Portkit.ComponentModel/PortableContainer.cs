@@ -22,7 +22,7 @@ namespace Portkit.ComponentModel
         /// <summary>
         /// Gets the default instance of the IoC service container.
         /// </summary>
-        public PortableContainer Default
+        public static PortableContainer Default
         {
             get
             {
