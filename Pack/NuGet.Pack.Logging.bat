@@ -1,6 +1,3 @@
-@echo off
-set /p version= Enter package version:
-
-.nuget\nuget.exe pack ..\Source\Portkit.Logging\Portkit.Logging.csproj -prop configuration=release -Version %version% -Build
-
-PAUSE
+@ECHO off
+SET project_dir="..\Source\Portkit.Logging\Portkit.Logging.csproj"
+CALL NuGet.Pack.bat %project_dir%
