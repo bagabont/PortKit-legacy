@@ -101,6 +101,16 @@ namespace Portkit.ComponentModel
         }
 
         /// <summary>
+        /// Registers a transient component, the instance of which will not be cached.
+        /// </summary>
+        /// <typeparam name="TComponent">Type of the component.</typeparam>
+        public void RegisterTransient<TComponent>() where TComponent : class
+        {
+            Register<TComponent>();
+            _transients.Add(new KeyValuePair<Type, Type>(typeof(TComponent), typeof(TComponent)));
+        }
+
+        /// <summary>
         /// Removes all components of the specified from the container.
         /// </summary>
         /// <typeparam name="TComponent">Type of the components to be removed.</typeparam>
@@ -236,9 +246,13 @@ namespace Portkit.ComponentModel
         private object ResolveInstance(Type component, Type implementation)
         {
             lock (_instances)
-                return _instances.ContainsKey(implementation)
-                    ? _instances[implementation]
-                    : CreateNewInstance(component, implementation);
+            {
+                if (_instances.ContainsKey(implementation))
+                {
+                    return _instances[implementation];
+                }
+                return CreateNewInstance(component, implementation);
+            }
         }
 
         private object CreateNewInstance(Type component, Type implementation)
