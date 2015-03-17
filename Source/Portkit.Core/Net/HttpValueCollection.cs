@@ -169,53 +169,68 @@ namespace Portkit.Core.Net
             return sb.ToString();
         }
 
-        private void FillFromString(string query, bool urlencoded)
+        private void FillFromString(string s, bool urlencoded)
         {
-            var num = (query != null) ? query.Length : 0;
-            for (var i = 0; i < num; i++)
+            int l = (s != null) ? s.Length : 0;
+            int i = 0;
+
+            while (i < l)
             {
-                var startIndex = i;
-                var num4 = -1;
-                while (i < num)
+                // find next & while noting first = on the way (and if there are more)
+
+                int si = i;
+                int ti = -1;
+
+                while (i < l)
                 {
-                    var ch = query[i];
+                    char ch = s[i];
+
                     if (ch == '=')
                     {
-                        if (num4 < 0)
-                        {
-                            num4 = i;
-                        }
+                        if (ti < 0)
+                            ti = i;
                     }
                     else if (ch == '&')
                     {
                         break;
                     }
+
                     i++;
                 }
-                string str = null;
-                string str2;
-                if (num4 >= 0)
+
+                // extract the name / value pair
+
+                String name = null;
+                String value = null;
+
+                if (ti >= 0)
                 {
-                    str = query.Substring(startIndex, num4 - startIndex);
-                    str2 = query.Substring(num4 + 1, (i - num4) - 1);
+                    name = s.Substring(si, ti - si);
+                    value = s.Substring(ti + 1, i - ti - 1);
                 }
                 else
                 {
-                    str2 = query.Substring(startIndex, i - startIndex);
+                    value = s.Substring(si, i - si);
                 }
+
+                // add name / value pair to the collection
 
                 if (urlencoded)
                 {
-                    Add(Uri.UnescapeDataString(str), Uri.UnescapeDataString(str2));
+                    Add(Uri.UnescapeDataString(name), Uri.UnescapeDataString(value));
                 }
                 else
                 {
-                    Add(str, str2);
+                    Add(name, value);
                 }
-                if ((i == (num - 1)) && (query[i] == '&'))
+
+                // trailing '&'
+
+                if (i == l - 1 && s[i] == '&')
                 {
-                    Add(null, string.Empty);
+                    Add(null, String.Empty);
                 }
+                i++;
             }
         }
 

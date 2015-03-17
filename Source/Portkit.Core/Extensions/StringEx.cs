@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Portkit.Core.Cryptography;
+using Portkit.Core.Net;
 
 namespace Portkit.Core.Extensions
 {
@@ -70,24 +71,10 @@ namespace Portkit.Core.Extensions
         /// </summary>
         /// <param name="source">URI with query.</param>
         /// <returns>Mapped parameter name and value dictionary.</returns>
-        public static Dictionary<string, string> ParseQueryString(this Uri source)
+        public static IDictionary<string, string> ParseQueryString(this Uri source)
         {
-            string query;
-            if (source.IsAbsoluteUri)
-            {
-                query = source.Query;
-            }
-            else
-            {
-                var hasQuery = source.OriginalString.IndexOf("?", StringComparison.Ordinal);
-                query = (hasQuery == -1) ? string.Empty : source.OriginalString.Substring(hasQuery);
-            }
-            var values = query.Replace("?", string.Empty)
-                .Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
-
-            return values.ToDictionary(k =>
-                k.Substring(0, k.IndexOf('=')), v =>
-                    Uri.UnescapeDataString(v.Substring(v.IndexOf('=') + 1)));
+            var parameters = HttpUtility.ParseQueryString(source.OriginalString);
+            return parameters.IsNullOrEmpty() ? null : parameters.ToDictionary(p => p.Key, p => p.Value);
         }
 
         /// <summary>
