@@ -1,11 +1,13 @@
-﻿using Portkit.Core.Extensions;
+﻿using Portkit.Core;
+using Portkit.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
-namespace Portkit.Core
+namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Represents a class for retrieving and storing settings.
@@ -18,7 +20,6 @@ namespace Portkit.Core
         /// Fired whenever a value is being changed.
         /// </summary>
         public event EventHandler<DataEventArgs<string>> ValueChanged;
-
 
         /// <summary>
         /// Fires the <see cref="ValueChanged"/> event.
@@ -106,7 +107,6 @@ namespace Portkit.Core
 
         }
 
-#if UNIVERSAL
         /// <summary>
         /// Gets a value
         /// </summary>
@@ -127,7 +127,6 @@ namespace Portkit.Core
         {
             InternalSetValue(key, value);
         }
-#endif
 
         /// <summary>
         /// Gets a value

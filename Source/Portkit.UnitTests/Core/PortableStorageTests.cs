@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Portkit.Core;
+using Portkit.ComponentModel;
 
 namespace Portkit.UnitTests.Core
 {

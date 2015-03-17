@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMessageBus.cs" />
+    <Compile Include="PortableStorage.cs" />
     <Compile Include="Presenter\IPropertyValidation.cs" />
     <Compile Include="MessageBus.cs" />
     <Compile Include="Presenter\ObservableObject.cs" />

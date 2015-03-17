@@ -58,7 +58,6 @@
     <Compile Include="Net\HttpUtility.cs" />
     <Compile Include="Net\HttpValue.cs" />
     <Compile Include="Net\HttpValueCollection.cs" />
-    <Compile Include="PortableStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
