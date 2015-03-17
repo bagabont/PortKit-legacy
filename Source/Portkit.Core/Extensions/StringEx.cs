@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Portkit.Core.Cryptography;
+using System;
 using System.Text;
-using Portkit.Core.Cryptography;
-using Portkit.Core.Net;
 
 namespace Portkit.Core.Extensions
 {
@@ -64,17 +61,6 @@ namespace Portkit.Core.Extensions
                 }
             }
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// Parses all query parameters from the URI to a dictionary.
-        /// </summary>
-        /// <param name="source">URI with query.</param>
-        /// <returns>Mapped parameter name and value dictionary.</returns>
-        public static IDictionary<string, string> ParseQueryString(this Uri source)
-        {
-            var parameters = HttpUtility.ParseQueryString(source.OriginalString);
-            return parameters.IsNullOrEmpty() ? null : parameters.ToDictionary(p => p.Key, p => p.Value);
         }
 
         /// <summary>
