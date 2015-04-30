@@ -1,12 +1,12 @@
-﻿using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-using Portkit.ComponentModel.Threading;
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using Portkit.ComponentModel.Threading;
 using Portkit.Core.Extensions;
 
-namespace Portkit.ComponentModel.Presenter
+namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Represents a base object that implements <see cref="INotifyPropertyChanged"/> and raises it on UI thread.

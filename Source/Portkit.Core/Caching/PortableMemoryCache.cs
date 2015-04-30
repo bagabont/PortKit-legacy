@@ -8,12 +8,11 @@ namespace Portkit.Core.Caching
     /// <summary>
     /// Represents a storage class that allows caching items.
     /// </summary>
-    public class PortableCache
+    public class PortableMemoryCache
     {
         #region Fields
 
         private readonly IDictionary<object, CacheItem> _cache;
-
         private static readonly object SyncLock = new Object();
 
         private const int MONITOR_WAIT_DEFAULT = 1000;
@@ -93,9 +92,9 @@ namespace Portkit.Core.Caching
         #region Constructors
 
         /// <summary>
-        /// Creates a new instance of the <see cref="PortableCache"/> class.
+        /// Creates a new instance of the <see cref="PortableMemoryCache"/> class.
         /// </summary>
-        public PortableCache()
+        public PortableMemoryCache()
         {
             _cache = new Dictionary<object, CacheItem>();
         }

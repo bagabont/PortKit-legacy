@@ -70,6 +70,11 @@ namespace Portkit.ComponentModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets whether the storage serializes the values to XML.
+        /// </summary>
+        public bool SerializeValues { get; set; }
+
         #endregion
 
         #region Constructors
@@ -85,6 +90,7 @@ namespace Portkit.ComponentModel
                 throw new ArgumentNullException("storage");
             }
             _storage = storage;
+            SerializeValues = true;
         }
 
         #endregion
@@ -159,7 +165,14 @@ namespace Portkit.ComponentModel
             {
                 throw new ArgumentException("key");
             }
-            _storage[key] = value != null ? SerializeToString(value) : null;
+            if (SerializeValues)
+            {
+                _storage[key] = value != null ? SerializeToString(value) : null;
+            }
+            else
+            {
+                _storage[key] = value;
+            }
             OnValueChanged(key);
         }
 
@@ -169,19 +182,32 @@ namespace Portkit.ComponentModel
             {
                 throw new ArgumentException("key");
             }
-            object xmlData;
-            _storage.TryGetValue(key, out xmlData);
-            if (xmlData != null)
+
+            object data;
+            if (!_storage.TryGetValue(key, out data))
             {
-                return DeserializeFromString<T>((String)xmlData);
+                return default(T);
             }
+
+            if (SerializeValues)
+            {
+                if (data != null)
+                {
+                    return DeserializeFromString<T>((String)data);
+                }
+            }
+            else
+            {
+                return (T)data;
+            }
+
             return default(T);
         }
 
         private static string SerializeToString(object obj)
         {
-            var serializer = new XmlSerializer(obj.GetType());
-            using (var writer = new StringWriter())
+            XmlSerializer serializer = new XmlSerializer(obj.GetType());
+            using (StringWriter writer = new StringWriter())
             {
                 serializer.Serialize(writer, obj);
                 return writer.ToString();

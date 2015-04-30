@@ -3,7 +3,7 @@
 namespace Portkit.Core.Caching
 {
     /// <summary>
-    /// Represents a cache item, that can be stored in <see cref="PortableCache"/> class instance.
+    /// Represents a cache item, that can be stored in <see cref="PortableMemoryCache"/> class instance.
     /// </summary>
     public class CacheItem
     {

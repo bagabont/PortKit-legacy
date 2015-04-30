@@ -15,7 +15,7 @@ namespace Portkit.Core.Extensions
         /// <returns>SHA-1 hash value.</returns>
         public static string GetSha1(this string source)
         {
-            var shaGenerator = new Sha1();
+            Sha1 shaGenerator = new Sha1();
             return shaGenerator.ComputeHashString(Encoding.UTF8.GetBytes(source));
         }
 

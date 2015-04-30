@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Portkit.ComponentModel.Presenter
+namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Represents a relay command class of a generic type for delegating methods.
@@ -16,7 +16,7 @@ namespace Portkit.ComponentModel.Presenter
         /// </summary>
         /// <param name="execute">Method to be executed when the command is called.</param>
         public RelayCommand(Action<T> execute)
-            : base(o => execute((T)o), o => true)
+            : base(args => execute((T)args), _ => true)
         {
 
         }
@@ -27,7 +27,7 @@ namespace Portkit.ComponentModel.Presenter
         /// <param name="execute">Method to be executed when the command is called.</param>
         /// <param name="canExecute">Predicate to check if the command can execute.</param>
         public RelayCommand(Action<T> execute, Predicate<T> canExecute)
-            : base(o => execute((T)o), o => canExecute((T)o))
+            : base(args => execute((T)args), o => canExecute((T)o))
         {
 
         }

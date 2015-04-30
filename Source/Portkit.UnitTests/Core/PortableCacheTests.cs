@@ -15,7 +15,7 @@ namespace Portkit.UnitTests.Core
         [TestMethod]
         public void CacheInitializationTest()
         {
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             Assert.IsNotNull(cache);
         }
 
@@ -23,7 +23,7 @@ namespace Portkit.UnitTests.Core
         public void ConcurrencyAddTest()
         {
             var array = new byte[] { 1, 2, 3 };
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             const int count = 10000;
             bool hasThrown = false;
             var task = new Task[2];
@@ -68,7 +68,7 @@ namespace Portkit.UnitTests.Core
         {
             bool hasThrown = false;
             var array = new byte[] { 1, 2, 3 };
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             const int count = 10000;
             //Fill cache
             for (int i = 0; i < count; i++)
@@ -116,7 +116,7 @@ namespace Portkit.UnitTests.Core
         {
             bool hasThrown = false;
             var array = new byte[] { 1, 2, 3 };
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             const int count = 10000;
             //Fill cache
             for (int i = 0; i < count; i++)
@@ -157,7 +157,7 @@ namespace Portkit.UnitTests.Core
         public void AddNewStreamObjectTest()
         {
             var array = new byte[] { 1, 2, 3 };
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             const string key = "stream";
             var ms = new MemoryStream(100);
             ms.Write(array, 0, 3);
@@ -172,7 +172,7 @@ namespace Portkit.UnitTests.Core
         {
             var array = new byte[] { 1, 2, 3 };
             const string key = "stream";
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             cache.Add(key, array);
             cache.Add(key, array);
 
@@ -184,7 +184,7 @@ namespace Portkit.UnitTests.Core
         {
             const string key = "stream";
             var array = new byte[] { 1, 2, 3 };
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             cache.Add(key, array);
             Assert.IsTrue(cache.Remove(key));
             Assert.IsFalse(cache.Contains(key) && cache.Count > 0, "Object not removed");
@@ -195,7 +195,7 @@ namespace Portkit.UnitTests.Core
         {
             var array = new byte[] { 1, 2, 3 };
             const string key = "stream";
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             cache.Add(key, array);
             Assert.IsFalse(cache.Remove("SOMETHING"));
             Assert.IsTrue(cache.Contains(key));
@@ -204,7 +204,7 @@ namespace Portkit.UnitTests.Core
         [TestMethod]
         public void ContainsObjectReturnsTrueTest()
         {
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             cache.Add("person", new object());
             Assert.IsTrue(cache.Contains("person"));
         }
@@ -212,7 +212,7 @@ namespace Portkit.UnitTests.Core
         [TestMethod]
         public void ContainsObjectReturnsFalseTest()
         {
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             //Check on empty cache
             Assert.IsFalse(cache.Contains("person"));
             cache.Add("person", new object());
@@ -223,7 +223,7 @@ namespace Portkit.UnitTests.Core
         [TestMethod]
         public void ClearCacheTest()
         {
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             cache.Add(1, new object());
             cache.Add(2, new object());
             cache.Add(3, new object());
@@ -238,7 +238,7 @@ namespace Portkit.UnitTests.Core
         public void ClearFiresCacheItemRemovedEveryTimeTest()
         {
             int cacheItemRemovedCount = 0;
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
 
             // Wire item removed event.
             cache.CacheItemRemoved += (s, e) =>
@@ -263,7 +263,7 @@ namespace Portkit.UnitTests.Core
         {
             var array = new byte[] { 1, 2, 3 };
             const string key = "stream";
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             cache.Add(key, array);
             byte[] actual = cache.Get<string, byte[]>(key);
             Assert.IsNotNull(actual);
@@ -273,7 +273,7 @@ namespace Portkit.UnitTests.Core
         [TestMethod]
         public void GetNonExistingObjectReturnsNullTest()
         {
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             object actual = cache.Get<string, object>(Guid.NewGuid().ToString());
             Assert.IsNull(actual);
             var person = new object();
@@ -288,7 +288,7 @@ namespace Portkit.UnitTests.Core
             var array = new byte[] { 1, 2, 3 };
             const string key = "stream";
             var waitHandler = new AutoResetEvent(false);
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             cache.Add(key, array);
             CacheItem removedItem = null;
             cache.CacheItemRemoved += (s, e) =>
@@ -307,7 +307,7 @@ namespace Portkit.UnitTests.Core
             var array = new byte[] { 1, 2, 3 };
             const string key = "stream";
             var waitHandler = new AutoResetEvent(false);
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             CacheItem addedItem = null;
             cache.CacheItemAdded += (s, e) =>
             {
@@ -323,7 +323,7 @@ namespace Portkit.UnitTests.Core
         [TestMethod]
         public void PurgeNormalPrioritiesTest()
         {
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
 
             const string normalPriorityKey = "1";
             const string highPriorityKey = "100";
@@ -345,7 +345,7 @@ namespace Portkit.UnitTests.Core
         public async Task AbsoluteExpirationTest()
         {
             const int key = 1;
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
             const int expirationPeriod = 100;
 
             var offset = DateTimeOffset.UtcNow.AddMilliseconds(expirationPeriod);
@@ -365,7 +365,7 @@ namespace Portkit.UnitTests.Core
         public async Task SlidingExpirationTest()
         {
             const int key = 1;
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
 
             // Set absolute offset, to test if it gets overridden. 
             var offset = DateTimeOffset.UtcNow.AddMilliseconds(500);
@@ -395,7 +395,7 @@ namespace Portkit.UnitTests.Core
         {
             const int key = 1;
             const int expirationPeriod = 50;
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
 
             var offset = DateTimeOffset.UtcNow.AddMilliseconds(expirationPeriod);
             var expPolicy = new CacheItemPolicy(CacheItemPriority.Normal, offset, CacheItemPolicy.NoSliding);
@@ -423,7 +423,7 @@ namespace Portkit.UnitTests.Core
         {
             const int key = 1;
             const int expirationPeriod = 50;
-            var cache = new PortableCache();
+            var cache = new PortableMemoryCache();
 
             var offset = DateTimeOffset.UtcNow.AddMilliseconds(expirationPeriod);
             var expPolicy = new CacheItemPolicy(CacheItemPriority.Normal, offset, CacheItemPolicy.NoSliding);

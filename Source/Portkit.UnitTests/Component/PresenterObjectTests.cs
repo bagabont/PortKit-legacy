@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.ComponentModel;
-using Portkit.ComponentModel.Presenter;
+using Portkit.ComponentModel;
 using Portkit.ComponentModel.Threading;
 
 namespace Portkit.UnitTests.Component

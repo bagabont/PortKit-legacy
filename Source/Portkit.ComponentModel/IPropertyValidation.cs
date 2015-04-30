@@ -1,4 +1,4 @@
-﻿namespace Portkit.ComponentModel.Presenter
+﻿namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Represents a property validation interface.

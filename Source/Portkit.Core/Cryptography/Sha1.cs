@@ -49,13 +49,8 @@ namespace Portkit.Core.Cryptography
         /// </summary>
         public string ComputeHashString(byte[] buffer, int offset, int count)
         {
-            var data = ComputeHash(buffer, offset, count);
-            var sb = new StringBuilder();
-            foreach (var b in data)
-            {
-                sb.Append(b.ToString("x2"));
-            }
-            return sb.ToString().ToLower();
+            byte[] data = ComputeHash(buffer, offset, count);
+            return BitConverter.ToString(data).Replace("-", "").ToLowerInvariant();
         }
 
         /// <summary>

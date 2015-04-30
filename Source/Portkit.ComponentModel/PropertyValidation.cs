@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Portkit.ComponentModel.Presenter
+namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Represents a class for property validation.

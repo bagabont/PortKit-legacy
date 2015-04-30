@@ -16,7 +16,7 @@ namespace Portkit.Core.Extensions
         public static IEnumerable CastSlow(this IEnumerable series, Type elementType)
         {
             var method = typeof(Enumerable).GetMethod("Cast").MakeGenericMethod(elementType);
-            return method.Invoke(null, new[] { series }) as IEnumerable;
+            return method.Invoke(null, new object[] { series }) as IEnumerable;
         }
 
         /// <summary>

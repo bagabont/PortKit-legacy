@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Portkit.ComponentModel.Presenter;
+using Portkit.ComponentModel;
 
 namespace Portkit.UnitTests.Component
 {

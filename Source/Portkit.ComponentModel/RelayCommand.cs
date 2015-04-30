@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace Portkit.ComponentModel.Presenter
+namespace Portkit.ComponentModel
 {
     /// <summary>
     /// Represents an <see cref="ICommand"/> implementation.
