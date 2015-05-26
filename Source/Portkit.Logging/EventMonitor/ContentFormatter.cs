@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.IO;
 
-namespace Portkit.Logging
+namespace Portkit.Logging.EventMonitor
 {
     /// <summary>
     /// Base class to format entry content as string.

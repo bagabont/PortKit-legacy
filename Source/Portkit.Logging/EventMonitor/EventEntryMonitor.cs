@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Portkit.Logging
+namespace Portkit.Logging.EventMonitor
 {
     internal sealed class EventEntryMonitor : IObservable<EventEntry>, IObserver<EventEntry>, IDisposable
     {

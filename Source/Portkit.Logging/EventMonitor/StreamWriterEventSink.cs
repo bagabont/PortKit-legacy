@@ -5,7 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Portkit.Logging
+namespace Portkit.Logging.EventMonitor
 {
     /// <summary>
     ///     A sink that writes to a stream.

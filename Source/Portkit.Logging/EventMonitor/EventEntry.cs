@@ -4,7 +4,7 @@ using System.Diagnostics.Tracing;
 using System.Globalization;
 using System.Linq;
 
-namespace Portkit.Logging
+namespace Portkit.Logging.EventMonitor
 {
     /// <summary>
     /// Represents an event entry class.

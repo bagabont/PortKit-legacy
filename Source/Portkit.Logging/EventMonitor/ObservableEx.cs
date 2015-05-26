@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Portkit.Logging
+namespace Portkit.Logging.EventMonitor
 {
     internal static class ObservableEx
     {

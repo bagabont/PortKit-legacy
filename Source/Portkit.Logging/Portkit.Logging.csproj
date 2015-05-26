@@ -38,15 +38,17 @@
     <DocumentationFile>bin\Release\Portkit.Logging.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ContentFormatter.cs" />
-    <Compile Include="EventEntry.cs" />
-    <Compile Include="EventEntryMonitor.cs" />
-    <Compile Include="ListEx.cs" />
-    <Compile Include="ObservableEventListener.cs" />
-    <Compile Include="ObservableEx.cs" />
+    <Compile Include="EventMonitor\ContentFormatter.cs" />
+    <Compile Include="EventMonitor\EventEntry.cs" />
+    <Compile Include="EventMonitor\EventEntryMonitor.cs" />
+    <Compile Include="EventMonitor\ListEx.cs" />
+    <Compile Include="EventMonitor\ObservableEventListener.cs" />
+    <Compile Include="EventMonitor\ObservableEx.cs" />
+    <Compile Include="IRemoteErrorTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StreamWriterEventSink.cs" />
-    <Compile Include="TextContentFormatter.cs" />
+    <Compile Include="EventMonitor\StreamWriterEventSink.cs" />
+    <Compile Include="EventMonitor\TextContentFormatter.cs" />
+    <Compile Include="XmlLogger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

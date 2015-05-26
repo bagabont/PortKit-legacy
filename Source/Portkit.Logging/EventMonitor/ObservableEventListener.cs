@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Tracing;
 
-namespace Portkit.Logging
+namespace Portkit.Logging.EventMonitor
 {
     /// <summary>
     ///     Represents a class that can intercept log messages and diverts them from ETW to custom

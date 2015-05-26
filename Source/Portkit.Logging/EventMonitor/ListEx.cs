@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
 
-namespace Portkit.Logging
+namespace Portkit.Logging.EventMonitor
 {
     internal static class ListEx
     {
