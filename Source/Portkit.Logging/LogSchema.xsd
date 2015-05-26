@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LogSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           xmlns:mstns="http://tempuri.org/LogSchema.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="session" type="sessionType" />
+  <xs:complexType name="sessionType">
+    <xs:sequence>
+      <xs:element name="log" maxOccurs="unbounded" minOccurs="0">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:element type="xs:string" name="file" minOccurs="0"/>
+            <xs:element type="xs:int" name="line" minOccurs="0"/>
+            <xs:element ref="exception" minOccurs="0" maxOccurs="1"/>
+          </xs:sequence>
+          <xs:attribute type="xs:string" name="level" use="optional"/>
+          <xs:attribute type="xs:string" name="caller" use="optional"/>
+          <xs:attribute type="xs:dateTime" name="timestamp" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:dateTime" name="timestamp" use="required" />
+    <xs:anyAttribute processContents="lax"/>
+  </xs:complexType>
+  <xs:complexType name="exceptionType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="type"/>
+      <xs:element type="xs:string" name="message"/>
+      <xs:element type="xs:string" name="stacktrace"/>
+      <xs:element ref="exception" maxOccurs="1" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element type="exceptionType" name="exception" />
+</xs:schema>

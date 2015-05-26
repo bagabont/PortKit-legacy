@@ -89,6 +89,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\Portkit.Logging\LogSchema.xsd">
+      <Link>Logging\LogSchema.xsd</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

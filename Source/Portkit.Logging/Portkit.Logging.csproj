@@ -50,6 +50,11 @@
     <Compile Include="EventMonitor\TextContentFormatter.cs" />
     <Compile Include="XmlLogger.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="LogSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -13,7 +13,7 @@ namespace Portkit.Logging
         private static XmlLogger _log;
         private readonly XElement _session;
 
-        public List<IRemoteErrorTracker> Trackers { get; private set; }
+        public List<IRemoteErrorTracker> RemoteTrackers { get; private set; }
 
         public static XmlLogger Log
         {
@@ -37,7 +37,7 @@ namespace Portkit.Logging
         {
             _session = new XElement("session");
             _session.SetAttributeValue("timestamp", DateTime.Now.ToString("O"));
-            Trackers = new List<IRemoteErrorTracker>();
+            RemoteTrackers = new List<IRemoteErrorTracker>();
         }
 
         public void SetSessionAttribute(string name, object value)
@@ -45,29 +45,26 @@ namespace Portkit.Logging
             _session.SetAttributeValue(name, value);
         }
 
-        public void Info(string message, [CallerMemberName]string caller = null)
+        public void Information(string message, [CallerMemberName]string caller = null)
         {
-            const string type = "information";
-            XElement logEntry = CreateLogEntry(type, caller);
-            logEntry.Add(new XElement(type, message));
+            XElement logEntry = CreateLogEntry("information", caller);
+            logEntry.SetValue(message);
 
             _session.Add(logEntry);
         }
 
         public void Warning(string message, [CallerMemberName]string caller = null)
         {
-            const string type = "warning";
-            XElement logEntry = CreateLogEntry(type, caller);
-            logEntry.Add(new XElement(type, message));
+            XElement logEntry = CreateLogEntry("warning", caller);
+            logEntry.SetValue(message);
 
             _session.Add(logEntry);
         }
 
         public void Error(string message, [CallerMemberName]string caller = null)
         {
-            const string type = "error";
-            XElement logEntry = CreateLogEntry(type, caller);
-            logEntry.Add(new XElement(type, message));
+            XElement logEntry = CreateLogEntry("error", caller);
+            logEntry.SetValue(message);
 
             _session.Add(logEntry);
         }
@@ -77,7 +74,7 @@ namespace Portkit.Logging
             [CallerFilePath]string file = null,
             [CallerLineNumber]int lineNumber = 0)
         {
-            if (!Trackers.Any())
+            if (!RemoteTrackers.Any())
             {
                 throw new InvalidOperationException("No remote error trackers found. " +
                                                     "Please, either configure at least one error tracker " +
@@ -85,7 +82,7 @@ namespace Portkit.Logging
             }
 
             LogException(exception, caller, file, lineNumber);
-            foreach (var errorTracker in Trackers)
+            foreach (var errorTracker in RemoteTrackers)
             {
                 await errorTracker.ReportAsync(exception, caller, file, lineNumber);
             }
@@ -96,21 +93,22 @@ namespace Portkit.Logging
             [CallerFilePath]string file = null,
             [CallerLineNumber]int lineNumber = 0)
         {
-            const string type = "exception";
-            XElement logEntry = CreateLogEntry(type, caller);
+            XElement logEntry = CreateLogEntry("exception", caller);
+            logEntry.Add(new XElement("file", file));
+            logEntry.Add(new XElement("line", lineNumber));
 
             Exception error = exception;
+            XElement lastErrorXml = logEntry;
+
             while (error != null)
             {
                 XElement exceptionNode = new XElement("exception");
-                exceptionNode.SetAttributeValue("type", error.GetType());
-                exceptionNode.SetAttributeValue("file", file);
-                exceptionNode.SetAttributeValue("line", lineNumber);
+                exceptionNode.Add(new XElement("type", error.GetType()));
                 exceptionNode.Add(new XElement("message", error.Message));
                 exceptionNode.Add(new XElement("stacktrace", error.StackTrace));
 
-                // Add exception to log entry
-                logEntry.Add(exceptionNode);
+                lastErrorXml.Add(exceptionNode);
+                lastErrorXml = exceptionNode;
 
                 // Set inner exception
                 error = error.InnerException;
@@ -119,12 +117,13 @@ namespace Portkit.Logging
             _session.Add(logEntry);
         }
 
-        private XElement CreateLogEntry(string type, string caller)
+        private static XElement CreateLogEntry(string level, string caller)
         {
             XElement logEntry = new XElement("log");
-            logEntry.SetAttributeValue("timestamp", DateTime.Now.ToString("O"));
+            logEntry.SetAttributeValue("level", level);
             logEntry.SetAttributeValue("caller", caller);
-            logEntry.SetAttributeValue("type", type);
+            logEntry.SetAttributeValue("timestamp", DateTime.Now.ToString("O"));
+
             return logEntry;
         }
 
