@@ -129,7 +129,7 @@ namespace Portkit.Logging
 
         public string GetLogContent()
         {
-            return _session.ToString();
+            return _session.ToString(SaveOptions.DisableFormatting);
         }
     }
 }
