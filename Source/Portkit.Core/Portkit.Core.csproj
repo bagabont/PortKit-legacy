@@ -46,6 +46,7 @@
     <Compile Include="Caching\PortableMemoryCache.cs" />
     <Compile Include="Collections\GroupedEnumerable.cs" />
     <Compile Include="Collections\PublicGrouping.cs" />
+    <Compile Include="Collections\TypeSafeStringEnum.cs" />
     <Compile Include="Cryptography\Sha1.cs" />
     <Compile Include="DataEventArgs.cs" />
     <Compile Include="Extensions\DateTimeEx.cs" />
