@@ -49,7 +49,7 @@ namespace Portkit.UnitTests.Logging
 
             string log = XmlLogger.Log.GetLogContent();
             var xml = XDocument.Parse(log);
-            xml.Validate(_schemas, (o, e) => Assert.Fail(e.Message), true);
+            xml.Validate(_schemas, (o, e) => Assert.Fail(e.Message));
         }
 
         [TestMethod]
@@ -57,9 +57,8 @@ namespace Portkit.UnitTests.Logging
         {
             XmlLogger.Log.Error("Example error new line.");
             string log = XmlLogger.Log.GetLogContent();
-            XElement xml = XElement.Parse(log);
-            var errorNodes = xml.Descendants("error");
-            Assert.IsTrue(errorNodes.Any());
+            var xml = XDocument.Parse(log);
+            xml.Validate(_schemas, (o, e) => Assert.Fail(e.Message));
         }
 
         [TestMethod]
@@ -77,7 +76,9 @@ namespace Portkit.UnitTests.Logging
             {
                 XmlLogger.Log.LogException(ex);
             }
-            string content = XmlLogger.Log.GetLogContent();
+            string log = XmlLogger.Log.GetLogContent();
+            var xml = XDocument.Parse(log);
+            xml.Validate(_schemas, (o, e) => Assert.Fail(e.Message));
         }
     }
 }
