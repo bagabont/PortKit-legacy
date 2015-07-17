@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Portkit.UnitTests.Component
+namespace Portkit.UnitTests
 {
     internal interface ITestMock : IDisposable
     {

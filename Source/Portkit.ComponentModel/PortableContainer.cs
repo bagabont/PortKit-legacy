@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Portkit.Core.Collections;
+using Portkit.Core.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Portkit.Core.Collections;
-using Portkit.Core.Extensions;
 
 namespace Portkit.ComponentModel
 {
@@ -12,12 +12,16 @@ namespace Portkit.ComponentModel
     /// </summary>
     public class PortableContainer : IServiceProvider, IDisposable
     {
+        #region Fields
+
         private static readonly object SyncLock = new object();
         private static PortableContainer _default;
 
-        private readonly GroupedEnumerable<Type, Type> _register = new GroupedEnumerable<Type, Type>();
-        private readonly Dictionary<Type, object> _instances = new Dictionary<Type, object>();
-        private readonly HashSet<KeyValuePair<Type, Type>> _transients = new HashSet<KeyValuePair<Type, Type>>();
+        private readonly GroupedEnumerable<Type, Type> _componentsRegister = new GroupedEnumerable<Type, Type>();
+        private readonly Dictionary<Type, object> _instancesRegister = new Dictionary<Type, object>();
+        private readonly HashSet<KeyValuePair<Type, Type>> _transientsRegister = new HashSet<KeyValuePair<Type, Type>>();
+
+        #endregion
 
         /// <summary>
         /// Gets the default instance of the IoC service container.
@@ -42,23 +46,53 @@ namespace Portkit.ComponentModel
         }
 
         /// <summary>
-        /// Registers a component to the container.
+        /// Registers a component to the container and specifies it's implementation.
         /// </summary>
-        /// <typeparam name="TComponent">Type of the component.</typeparam>
-        public void Register<TComponent>() where TComponent : class
+        /// <param name="componenType">Type of the component.</param>
+        /// <param name="implementationType">Optional: Type of the component implementation, which will be used for instantiations.</param>
+        /// <param name="instance">Optional: Component instance.</param>
+        public void Register(Type componenType, Type implementationType = null, object instance = null)
         {
-            _register.Add(typeof(TComponent), typeof(TComponent));
+            if (componenType == null)
+            {
+                throw new ArgumentNullException("Component type cannot be null.");
+            }
+
+            // If no explicit implementation is defined, used the component type
+            if (implementationType == null)
+            {
+                implementationType = componenType;
+            }
+
+            // add component to registry
+            _componentsRegister.Add(componenType, implementationType);
+
+            if (instance == null)
+            {
+                return;
+            }
+
+            bool isAssignable = componenType.GetTypeInfo().IsAssignableFrom(instance.GetType().GetTypeInfo());
+            if (!isAssignable)
+            {
+                string errorMsg = String.Format("Instance of type '{0}' cannot be cast to component type '{1}'",
+                    instance.GetType(), componenType);
+                throw new InvalidCastException(errorMsg);
+            }
+            _instancesRegister.Add(implementationType, instance);
         }
 
         /// <summary>
-        /// Registers a component to the container.
+        /// Registers a component instance to the container and specifies it's implementation.
         /// </summary>
         /// <typeparam name="TComponent">Type of the component.</typeparam>
+        /// <typeparam name="TImplementation">Type of the component implementation.</typeparam>
         /// <param name="instance">Instance.</param>
-        public void Register<TComponent>(TComponent instance) where TComponent : class
+        public void Register<TComponent, TImplementation>(TComponent instance)
+            where TComponent : class
+            where TImplementation : TComponent
         {
-            _register.Add(typeof(TComponent), typeof(TComponent));
-            _instances.Add(typeof(TComponent), instance);
+            Register(typeof(TComponent), typeof(TImplementation), instance);
         }
 
         /// <summary>
@@ -70,21 +104,47 @@ namespace Portkit.ComponentModel
             where TComponent : class
             where TImplementation : TComponent
         {
-            _register.Add(typeof(TComponent), typeof(TImplementation));
+            Register(typeof(TComponent), typeof(TImplementation));
         }
 
         /// <summary>
-        /// Registers a component to the container and specifies it's implementation.
+        /// Registers a component to the container.
         /// </summary>
         /// <typeparam name="TComponent">Type of the component.</typeparam>
-        /// <typeparam name="TImplementation">Type of the component implementation.</typeparam>
-        /// <param name="instance">Instance.</param>
-        public void Register<TComponent, TImplementation>(TComponent instance)
+        public void Register<TComponent>()
             where TComponent : class
-            where TImplementation : TComponent
         {
-            Register<TComponent, TImplementation>();
-            _instances.Add(typeof(TImplementation), instance);
+            Register(typeof(TComponent));
+        }
+
+        /// <summary>
+        /// Registers a component to the container.
+        /// </summary>
+        /// <param name="instance">Component instance.</param>
+        public void Register<TComponent>(object instance)
+            where TComponent : class
+        {
+            if (instance == null)
+            {
+                throw new ArgumentNullException("instance", "Registered component instance cannot be null.");
+            }
+
+            // Cast instance before registering
+            Register(typeof(TComponent), typeof(TComponent), instance);
+        }
+
+        /// <summary>
+        /// Registers a component instance to the container.
+        /// </summary>
+        /// <param name="instance">Component instance.</param>
+        public void Register(object instance)
+        {
+            if (instance == null)
+            {
+                throw new ArgumentNullException("instance", "Registered component instance cannot be null.");
+            }
+            Type componenType = instance.GetType();
+            Register(componenType, componenType, instance);
         }
 
         /// <summary>
@@ -97,17 +157,18 @@ namespace Portkit.ComponentModel
             where TImplementation : TComponent
         {
             Register<TComponent, TImplementation>();
-            _transients.Add(new KeyValuePair<Type, Type>(typeof(TComponent), typeof(TImplementation)));
+            _transientsRegister.Add(new KeyValuePair<Type, Type>(typeof(TComponent), typeof(TImplementation)));
         }
 
         /// <summary>
         /// Registers a transient component, the instance of which will not be cached.
         /// </summary>
         /// <typeparam name="TComponent">Type of the component.</typeparam>
-        public void RegisterTransient<TComponent>() where TComponent : class
+        public void RegisterTransient<TComponent>()
+            where TComponent : class
         {
             Register<TComponent>();
-            _transients.Add(new KeyValuePair<Type, Type>(typeof(TComponent), typeof(TComponent)));
+            _transientsRegister.Add(new KeyValuePair<Type, Type>(typeof(TComponent), typeof(TComponent)));
         }
 
         /// <summary>
@@ -130,18 +191,18 @@ namespace Portkit.ComponentModel
             where TImplementation : TComponent
         {
             Type implementation = typeof(TImplementation);
-            if (_instances.ContainsKey(implementation))
+            if (_instancesRegister.ContainsKey(implementation))
             {
-                var disposable = _instances[implementation] as IDisposable;
+                var disposable = _instancesRegister[implementation] as IDisposable;
                 if (disposable != null)
                 {
                     disposable.Dispose();
                 }
             }
 
-            _instances.Remove(implementation);
+            _instancesRegister.Remove(implementation);
 
-            _register[typeof(TComponent)].Remove(typeof(TImplementation));
+            _componentsRegister[typeof(TComponent)].Remove(typeof(TImplementation));
         }
 
         /// <summary>
@@ -155,19 +216,19 @@ namespace Portkit.ComponentModel
                 throw new ArgumentNullException("component");
             }
 
-            foreach (Type implementation in _register[component])
+            foreach (Type implementation in _componentsRegister[component])
             {
-                if (_instances.ContainsKey(implementation))
+                if (_instancesRegister.ContainsKey(implementation))
                 {
-                    var disposable = _instances[implementation] as IDisposable;
+                    var disposable = _instancesRegister[implementation] as IDisposable;
                     if (disposable != null)
                     {
                         disposable.Dispose();
                     }
                 }
-                _instances.Remove(implementation);
+                _instancesRegister.Remove(implementation);
             }
-            _register.RemoveAll(component);
+            _componentsRegister.RemoveAll(component);
         }
 
         /// <summary>
@@ -217,8 +278,7 @@ namespace Portkit.ComponentModel
                     return ResolveAll(argument).CastSlow(argument);
                 }
             }
-            Type implementation = _register[component].FirstOrDefault();
-
+            Type implementation = _componentsRegister[component].FirstOrDefault();
             if (implementation == null)
             {
                 throw new InvalidOperationException(String.Format("Component {0} is not registered.", (component)));
@@ -239,17 +299,17 @@ namespace Portkit.ComponentModel
                 throw new ArgumentNullException("component");
             }
 
-            return _register[component]
+            return _componentsRegister[component]
                 .Select(implementation => ResolveInstance(component, implementation));
         }
 
         private object ResolveInstance(Type component, Type implementation)
         {
-            lock (_instances)
+            lock (_instancesRegister)
             {
-                if (_instances.ContainsKey(implementation))
+                if (_instancesRegister.ContainsKey(implementation))
                 {
-                    return _instances[implementation];
+                    return _instancesRegister[implementation];
                 }
                 return CreateNewInstance(component, implementation);
             }
@@ -258,15 +318,18 @@ namespace Portkit.ComponentModel
         private object CreateNewInstance(Type component, Type implementation)
         {
             ConstructorInfo constructor = SelectConstructor(component, implementation);
-            object[] arguments = constructor.GetParameters().Select(parameter => GetService(parameter.ParameterType)).ToArray();
+            object[] arguments = constructor.GetParameters()
+                .Select(parameter => GetService(parameter.ParameterType))
+                .ToArray();
 
             try
             {
                 object instance = constructor.Invoke(arguments);
 
-                if (!_transients.Contains(new KeyValuePair<Type, Type>(component, implementation)))
+                // Cache instance if not registered as transient
+                if (!_transientsRegister.Contains(new KeyValuePair<Type, Type>(component, implementation)))
                 {
-                    _instances.Add(implementation, instance);
+                    _instancesRegister.Add(implementation, instance);
                 }
 
                 return instance;
@@ -281,15 +344,16 @@ namespace Portkit.ComponentModel
 
         private static ConstructorInfo SelectConstructor(Type component, Type implementation)
         {
-            ConstructorInfo constructor =
-                implementation.GetTypeInfo()
+            ConstructorInfo constructor = implementation.GetTypeInfo()
                     .DeclaredConstructors.Where(c => c.IsPublic && !c.IsStatic)
                     .OrderByDescending(c => c.GetParameters().Length)
                     .FirstOrDefault();
+
             if (constructor == null)
             {
-                throw new InvalidOperationException(
-                    String.Format("No constructors available for {0} with implementation {1}", component, implementation));
+                string errorMsg = String.Format("No constructors available for {0} with implementation {1}",
+                    component, implementation);
+                throw new InvalidOperationException(errorMsg);
             }
 
             return constructor;
@@ -309,12 +373,12 @@ namespace Portkit.ComponentModel
             {
                 lock (this)
                 {
-                    foreach (IDisposable instance in _instances.Values)
+                    foreach (IDisposable instance in _instancesRegister.Values)
                     {
                         instance.Dispose();
                     }
-                    _register.Clear();
-                    _instances.Clear();
+                    _componentsRegister.Clear();
+                    _instancesRegister.Clear();
 
                     _isDisposed = true;
                     GC.SuppressFinalize(this);

@@ -1,17 +1,16 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Threading;
-using System.Xml;
-using System.Xml.Schema;
+﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Portkit.Logging;
 using System;
-using System.Linq;
+using System.IO;
+using System.Reflection;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace Portkit.UnitTests.Logging
 {
-    [TestClass]
+    [TestClass, ExcludeFromCodeCoverage]
     public class XmlLoggerTests
     {
         private XmlSchemaSet _schemas;

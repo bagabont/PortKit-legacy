@@ -67,12 +67,35 @@ namespace Portkit.UnitTests.Component
             using (var container = new PortableContainer())
             {
                 var instance = new TestMockOne();
-
                 container.Register<ITestMock>(new TestMockOne());
+                var resolved = container.Resolve<ITestMock>();
+                Assert.AreNotSame(instance, resolved);
+            }
+        }
 
+        [TestMethod]
+        public void RegisterObjectInstanceWithoutExplicitComponentTypeTest()
+        {
+            using (var container = new PortableContainer())
+            {
+                var instance = new TestMockOne();
+                container.Register(instance);
+                var resolved = container.Resolve<TestMockOne>();
+
+                Assert.AreSame(instance, resolved);
+            }
+        }
+
+        [TestMethod]
+        public void RegisterObjectInstanceWithExplicitComponentTypeTest()
+        {
+            using (var container = new PortableContainer())
+            {
+                var instance = new TestMockOne();
+                container.Register<ITestMock>(instance);
                 var resolved = container.Resolve<ITestMock>();
 
-                Assert.AreNotSame(instance, resolved);
+                Assert.AreSame(instance, resolved);
             }
         }
 
