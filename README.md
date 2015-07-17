@@ -11,6 +11,8 @@ To install Portkit packages, run the each of the following commands in the `Pack
 
 ```powershell
 PM> Install-Package Portkit.Core
-PM> Install-Package Portkit.Component
+
+PM> Install-Package Portkit.ComponentModel
+
 PM> Install-Package Portkit.Logging
 ```
