@@ -354,8 +354,8 @@ namespace Portkit.UnitTests.Core
             // Add item with expiration policy.
             cache.Add(key, new object(), expPolicy);
 
-            Assert.IsNotNull(await cache.GetWithDelay<int, object>(key, expirationPeriod / 3));
-            Assert.IsNotNull(await cache.GetWithDelay<int, object>(key, expirationPeriod / 3));
+            Assert.IsNotNull(await cache.GetWithDelay<int, object>(key, expirationPeriod / 5));
+            Assert.IsNotNull(await cache.GetWithDelay<int, object>(key, expirationPeriod / 5));
 
             // Item must be expired already.
             Assert.IsNull(await cache.GetWithDelay<int, object>(key, expirationPeriod / 3));
