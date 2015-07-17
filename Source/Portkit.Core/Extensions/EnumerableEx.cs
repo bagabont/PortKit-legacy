@@ -29,6 +29,17 @@ namespace Portkit.Core.Extensions
         }
 
         /// <summary>
+        /// Shuffles the collection.
+        /// </summary>
+        /// <param name="collection">Original collection</param>
+        /// <typeparam name="T">Items type.</typeparam>
+        /// <returns>Collection with same items, but shuffled items.</returns>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection)
+        {
+            return collection.OrderBy(_ => Guid.NewGuid());
+        }
+
+        /// <summary>
         /// Checks if a collection is ordered.
         /// </summary>
         /// <typeparam name="TItem">Type of items</typeparam>

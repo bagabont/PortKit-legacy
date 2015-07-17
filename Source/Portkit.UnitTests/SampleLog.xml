@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<?xml-stylesheet type="text/xsl" href="LogSchemaTransformation.xslt"?>
+
+<session timestamp="2015-06-08T12:58:06.1026805+02:00">
+  <log level="information" caller="LogHeterogeneousContentTest" timestamp="2015-06-08T12:58:06.1056798+02:00">Information message</log>
+  <log level="warning" caller="LogHeterogeneousContentTest" timestamp="2015-06-08T12:58:06.1056798+02:00">Warning message</log>
+  <log level="error" caller="LogHeterogeneousContentTest" timestamp="2015-06-08T12:58:06.1056798+02:00">Error message</log>
+  <log level="exception" caller="LogHeterogeneousContentTest" timestamp="2015-06-08T12:58:06.1056798+02:00">
+    <file>c:\DEV\Home\portkit\Source\Portkit.UnitTests\Logging\XmlLoggerTests.cs</file>
+    <line>70</line>
+    <exception>
+      <type>System.DivideByZeroException</type>
+      <message>Sample zero division.</message>
+      <stacktrace />
+    </exception>
+  </log>
+  <log level="exception" caller="LogHeterogeneousContentTest" timestamp="2015-06-08T12:58:06.1266757+02:00">
+    <file>c:\DEV\Home\portkit\Source\Portkit.UnitTests\Logging\XmlLoggerTests.cs</file>
+    <line>77</line>
+    <exception>
+      <type>System.Exception</type>
+      <message>Outer error message.</message>
+      <stacktrace>   at Portkit.UnitTests.Logging.XmlLoggerTests.LogHeterogeneousContentTest() in c:\DEV\Home\portkit\Source\Portkit.UnitTests\Logging\XmlLoggerTests.cs:line 73</stacktrace>
+      <exception>
+        <type>System.Exception</type>
+        <message>Internal error message.</message>
+        <stacktrace />
+      </exception>
+    </exception>
+  </log>
+</session>

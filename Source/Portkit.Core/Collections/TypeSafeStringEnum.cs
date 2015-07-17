@@ -29,6 +29,12 @@ namespace Portkit.Core.Collections
 
         #region Operators
 
+        /// <summary>
+        /// Compares two instances of <see cref="TypeSafeStringEnum"/>
+        /// </summary>
+        /// <param name="left">First instance</param>
+        /// <param name="right">Second instance</param>
+        /// <returns>True, if the underlying string value of the two instances is equal, otherwise false.</returns>
         public static bool operator ==(TypeSafeStringEnum left, TypeSafeStringEnum right)
         {
             if (ReferenceEquals(left, right))
@@ -42,6 +48,12 @@ namespace Portkit.Core.Collections
             return left._value == right._value;
         }
 
+        /// <summary>
+        /// Compares two instances of <see cref="TypeSafeStringEnum"/>
+        /// </summary>
+        /// <param name="left">First instance</param>
+        /// <param name="right">Second instance</param>
+        /// <returns>True, if the underlying string value of the two instances is not equal, otherwise false.</returns>
         public static bool operator !=(TypeSafeStringEnum left, TypeSafeStringEnum right)
         {
             return !(left == right);
@@ -51,6 +63,7 @@ namespace Portkit.Core.Collections
 
         #region IEquatable
 
+        /// <inheritdoc />     
         public override bool Equals(object other)
         {
             if (other == null)
@@ -65,6 +78,7 @@ namespace Portkit.Core.Collections
             return (_value == otherObject._value);
         }
 
+        /// <inheritdoc />
         public bool Equals(TypeSafeStringEnum other)
         {
             if ((object)other == null)

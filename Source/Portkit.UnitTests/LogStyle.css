@@ -1,0 +1,14 @@
+﻿.information {
+    background: #d9edf7;
+}
+
+.warning {
+    background: #fcf8e3
+}
+.error {
+    background: #f2dede;
+}
+
+.exception {
+    background: #ffaaaa;
+}
