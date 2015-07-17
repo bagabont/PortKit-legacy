@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.Logging;
 using System;
 using System.IO;
@@ -10,13 +10,13 @@ using System.Xml.Schema;
 
 namespace Portkit.UnitTests.Logging
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [TestFixture, ExcludeFromCodeCoverage]
     public class XmlLoggerTests
     {
         private XmlSchemaSet _schemas;
 
-        [TestInitialize]
-        [TestMethod]
+        [TestFixtureSetUp]
+        [Test]
         public void Initialize()
         {
             const string resourceName = "Portkit.UnitTests.Logging.LogSchema.xsd";
@@ -31,7 +31,7 @@ namespace Portkit.UnitTests.Logging
             }
         }
 
-        [TestMethod]
+        [Test]
         public void LogNestedExceptionsTest()
         {
             XmlLogger.Log.SetSessionAttribute("one", "text");
@@ -51,7 +51,7 @@ namespace Portkit.UnitTests.Logging
             xml.Validate(_schemas, (o, e) => Assert.Fail(e.Message));
         }
 
-        [TestMethod]
+        [Test]
         public void LogErrorTest()
         {
             XmlLogger.Log.Error("Example error new line.");
@@ -60,7 +60,7 @@ namespace Portkit.UnitTests.Logging
             xml.Validate(_schemas, (o, e) => Assert.Fail(e.Message));
         }
 
-        [TestMethod]
+        [Test]
         public void LogHeterogeneousContentTest()
         {
             XmlLogger.Log.Information("Information message");

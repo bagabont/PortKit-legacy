@@ -4,22 +4,22 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.Core.Caching;
 
 namespace Portkit.UnitTests.Core
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [TestFixture, ExcludeFromCodeCoverage]
     public class PortableCacheTests
     {
-        [TestMethod]
+        [Test]
         public void CacheInitializationTest()
         {
             var cache = new PortableMemoryCache();
             Assert.IsNotNull(cache);
         }
 
-        [TestMethod]
+        [Test]
         public void ConcurrencyAddTest()
         {
             var array = new byte[] { 1, 2, 3 };
@@ -63,7 +63,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsFalse(hasThrown, "Concurrency issue has occurred when adding item to cache.");
         }
 
-        [TestMethod]
+        [Test]
         public void ConcurrencyRemoveTest()
         {
             bool hasThrown = false;
@@ -111,7 +111,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsFalse(hasThrown, "Concurrency issue has occurred when removing item from cache.");
         }
 
-        [TestMethod]
+        [Test]
         public void ConcurrencyClearTest()
         {
             bool hasThrown = false;
@@ -153,7 +153,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsFalse(hasThrown, "Concurrency issue has occurred when clearing item from cache.");
         }
 
-        [TestMethod]
+        [Test]
         public void AddNewStreamObjectTest()
         {
             var array = new byte[] { 1, 2, 3 };
@@ -167,7 +167,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual.Length == array.Length && actual[0] == array[0] && actual[2] == array[2]);
         }
 
-        [TestMethod]
+        [Test]
         public void ReplaceExistingItemOnAddTest()
         {
             var array = new byte[] { 1, 2, 3 };
@@ -179,7 +179,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(cache.Count == 1);
         }
 
-        [TestMethod]
+        [Test]
         public void RemoveExistingObjectReturnsTrueTest()
         {
             const string key = "stream";
@@ -190,7 +190,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsFalse(cache.Contains(key) && cache.Count > 0, "Object not removed");
         }
 
-        [TestMethod]
+        [Test]
         public void RemoveNonExistingObjectReturnsFalseTest()
         {
             var array = new byte[] { 1, 2, 3 };
@@ -201,7 +201,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(cache.Contains(key));
         }
 
-        [TestMethod]
+        [Test]
         public void ContainsObjectReturnsTrueTest()
         {
             var cache = new PortableMemoryCache();
@@ -209,7 +209,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(cache.Contains("person"));
         }
 
-        [TestMethod]
+        [Test]
         public void ContainsObjectReturnsFalseTest()
         {
             var cache = new PortableMemoryCache();
@@ -220,7 +220,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsFalse(cache.Contains("animal"));
         }
 
-        [TestMethod]
+        [Test]
         public void ClearCacheTest()
         {
             var cache = new PortableMemoryCache();
@@ -234,7 +234,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(cache.Count == 0, "Cache was not cleared. Items count: {0}", cache.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void ClearFiresCacheItemRemovedEveryTimeTest()
         {
             int cacheItemRemovedCount = 0;
@@ -258,7 +258,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(cache.Count == 0);
         }
 
-        [TestMethod]
+        [Test]
         public void GetObjectItemTest()
         {
             var array = new byte[] { 1, 2, 3 };
@@ -270,7 +270,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual.Length == array.Length && actual[0] == array[0] && actual[2] == array[2]);
         }
 
-        [TestMethod]
+        [Test]
         public void GetNonExistingObjectReturnsNullTest()
         {
             var cache = new PortableMemoryCache();
@@ -282,7 +282,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsNull(actual);
         }
 
-        [TestMethod]
+        [Test]
         public void ItemRemovedFiresEventTests()
         {
             var array = new byte[] { 1, 2, 3 };
@@ -301,7 +301,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsNotNull(removedItem);
         }
 
-        [TestMethod]
+        [Test]
         public void ItemAddedFiresEventTests()
         {
             var array = new byte[] { 1, 2, 3 };
@@ -320,7 +320,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsNotNull(addedItem);
         }
 
-        [TestMethod]
+        [Test]
         public void PurgeNormalPrioritiesTest()
         {
             var cache = new PortableMemoryCache();
@@ -341,7 +341,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsFalse(cache.Contains(normalPriorityKey));
         }
 
-        [TestMethod]
+        [Test]
         public async Task AbsoluteExpirationTest()
         {
             const int key = 1;
@@ -361,7 +361,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsNull(await cache.GetWithDelay<int, object>(key, expirationPeriod / 3));
         }
 
-        [TestMethod]
+        [Test]
         public async Task SlidingExpirationTest()
         {
             const int key = 1;
@@ -390,7 +390,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsNull(await cache.GetWithDelay<int, object>(key, (int)slider.TotalMilliseconds));
         }
 
-        [TestMethod]
+        [Test]
         public async Task PurgeExpiredItemsAutomaticallyTest()
         {
             const int key = 1;
@@ -418,7 +418,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(cache.Count == 0);
         }
 
-        [TestMethod]
+        [Test]
         public async Task PurgeExpiredItemsManuallyTest()
         {
             const int key = 1;

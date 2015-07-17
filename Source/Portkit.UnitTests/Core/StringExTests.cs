@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.Core.Extensions;
 
 namespace Portkit.UnitTests.Core
 {
-    [TestClass]
+    [TestFixture]
     [ExcludeFromCodeCoverage]
     public class StringExTests
     {
-        [TestMethod]
+        [Test]
         public void GetSha1Test()
         {
             const string data = "abc";

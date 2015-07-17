@@ -1,35 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.Core.Extensions;
 
 namespace Portkit.UnitTests.Core
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [TestFixture, ExcludeFromCodeCoverage]
     public class CollectionExTests
     {
-        [TestMethod]
+        [Test]
         public void IsNullTest()
         {
             IList<object> list = null;
             Assert.IsTrue(list.IsNullOrEmpty());
         }
 
-        [TestMethod]
+        [Test]
         public void IsEmptyTest()
         {
             var list = new List<object>();
             Assert.IsTrue(list.IsNullOrEmpty());
         }
 
-        [TestMethod]
+        [Test]
         public void IsNotEmptyTest()
         {
             var list = new List<object> { new object() };
             Assert.IsFalse(list.IsNullOrEmpty());
         }
 
-        [TestMethod]
+        [Test]
         public void IsOrderedAscendingTest()
         {
             var data = new Dictionary<string, object>
@@ -41,7 +41,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(data.IsOrdered(c => c.Key));
         }
 
-        [TestMethod]
+        [Test]
         public void IsNotOrderedTest()
         {
             var unorderedData = new Dictionary<string, object>
@@ -53,7 +53,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsFalse(unorderedData.IsOrdered(c => c.Key));
         }
 
-        [TestMethod]
+        [Test]
         public void IsOrderedDescendingTest()
         {
             var descendingData = new Dictionary<string, object>

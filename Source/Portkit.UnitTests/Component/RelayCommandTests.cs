@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.ComponentModel;
 
 namespace Portkit.UnitTests.Component
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [TestFixture, ExcludeFromCodeCoverage]
     public class RelayCommandTests
     {
-        [TestMethod]
+        [Test]
         public void RelayCommandExecuteTest()
         {
             bool hasExecuted = false;
@@ -20,7 +20,7 @@ namespace Portkit.UnitTests.Component
             Assert.IsTrue(hasExecuted);
         }
 
-        [TestMethod]
+        [Test]
         public void RelayCommandCanExecuteTest()
         {
             bool hasExecuted = false;
@@ -31,7 +31,7 @@ namespace Portkit.UnitTests.Component
             Assert.IsFalse(hasExecuted);
         }
 
-        [TestMethod]
+        [Test]
         public void RelayCommandRaiseCanExecuteChanged()
         {
             bool canExecute = false;

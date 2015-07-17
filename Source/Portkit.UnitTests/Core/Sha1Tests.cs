@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.Core.Cryptography;
 
 namespace Portkit.UnitTests.Core
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [TestFixture, ExcludeFromCodeCoverage]
     public class Sha1Tests
     {
-        [TestMethod]
+        [Test]
         public void PerformanceTest()
         {
             var sb = new StringBuilder();
@@ -28,7 +28,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(stopwatch.ElapsedMilliseconds < 600, "Hashing is too slow.");
         }
 
-        [TestMethod]
+        [Test]
         public void InvalidMessageHashingTest()
         {
             var shaGenerator = new Sha1();
@@ -38,7 +38,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual != expected);
         }
 
-        [TestMethod]
+        [Test]
         public void SingleGeneratorDoubleHashingTest()
         {
             var shaGenerator = new Sha1();
@@ -52,7 +52,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual != expected);
         }
 
-        [TestMethod]
+        [Test]
         public void EmptyMessageHashingTest()
         {
             var shaGenerator = new Sha1();
@@ -62,7 +62,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual == expected);
         }
 
-        [TestMethod]
+        [Test]
         public void ShortMessageHashingTest()
         {
             var shaGenerator = new Sha1();
@@ -72,7 +72,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual == expected);
         }
 
-        [TestMethod]
+        [Test]
         public void LongMessageHashingTest()
         {
             var shaGenerator = new Sha1();
@@ -82,7 +82,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual == expected);
         }
 
-        [TestMethod]
+        [Test]
         public void VeryLongMessageHashingTest()
         {
             var shaGenerator = new Sha1();
@@ -135,7 +135,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual == expected);
         }
 
-        [TestMethod]
+        [Test]
         public void OneCharDifferenceAtRandomPositionHashTest()
         {
             var shaGenerator = new Sha1();
@@ -188,7 +188,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual != expected);
         }
 
-        [TestMethod]
+        [Test]
         public void OneCharDifferenceAtEndHashTest()
         {
             var shaGenerator = new Sha1();
@@ -241,7 +241,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(actual != expected);
         }
 
-        [TestMethod]
+        [Test]
         public void OneCharDifferenceAtStartHashTest()
         {
             var shaGenerator = new Sha1();

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.ComponentModel;
 
 namespace Portkit.UnitTests.Component
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [TestFixture, ExcludeFromCodeCoverage]
     public class ContainerTests
     {
-        [TestMethod]
+        [Test]
         public void RegisterClassOnlyTest()
         {
             var container = new PortableContainer();
@@ -19,10 +19,10 @@ namespace Portkit.UnitTests.Component
             var service = container.Resolve<TestMockOne>();
 
             Assert.IsNotNull(service);
-            Assert.IsInstanceOfType(service, typeof(TestMockOne));
+            Assert.IsInstanceOf<TestMockOne>(service);
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveComponentImplementationInstanceEqualTest()
         {
             using (var container = new PortableContainer())
@@ -34,7 +34,7 @@ namespace Portkit.UnitTests.Component
             }
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveComponentImplementationInstanceNotEqualTest()
         {
             using (var container = new PortableContainer())
@@ -49,7 +49,7 @@ namespace Portkit.UnitTests.Component
             }
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveImplementationInstanceEqualTest()
         {
             using (var container = new PortableContainer())
@@ -61,7 +61,7 @@ namespace Portkit.UnitTests.Component
             }
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveImplementationInstanceNotEqualTest()
         {
             using (var container = new PortableContainer())
@@ -73,7 +73,7 @@ namespace Portkit.UnitTests.Component
             }
         }
 
-        [TestMethod]
+        [Test]
         public void RegisterObjectInstanceWithoutExplicitComponentTypeTest()
         {
             using (var container = new PortableContainer())
@@ -86,7 +86,7 @@ namespace Portkit.UnitTests.Component
             }
         }
 
-        [TestMethod]
+        [Test]
         public void RegisterObjectInstanceWithExplicitComponentTypeTest()
         {
             using (var container = new PortableContainer())
@@ -99,7 +99,7 @@ namespace Portkit.UnitTests.Component
             }
         }
 
-        [TestMethod]
+        [Test]
         public void ThrowExceptionIfNotRegisteredTest()
         {
             try
@@ -114,7 +114,7 @@ namespace Portkit.UnitTests.Component
             Assert.Fail("Did not throw exception");
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveRegisteredTest()
         {
             var container = new PortableContainer();
@@ -123,10 +123,10 @@ namespace Portkit.UnitTests.Component
             var service = container.Resolve<ITestMock>();
 
             Assert.IsNotNull(service);
-            Assert.IsInstanceOfType(service, typeof(TestMockOne));
+            Assert.IsInstanceOf<TestMockOne>(service);
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveFirstRegisteredTest()
         {
             var container = new PortableContainer();
@@ -136,10 +136,10 @@ namespace Portkit.UnitTests.Component
             var service = container.Resolve<ITestMock>();
 
             Assert.IsNotNull(service);
-            Assert.IsInstanceOfType(service, typeof(TestMockOne));
+            Assert.IsInstanceOf<TestMockOne>(service);
         }
 
-        [TestMethod]
+        [Test]
         public void EnumerableArgumentInConstructorTest()
         {
             var container = new PortableContainer();
@@ -152,10 +152,10 @@ namespace Portkit.UnitTests.Component
             Assert.IsNotNull(asks);
 
             Assert.IsNotNull(asks.SecondService);
-            Assert.IsInstanceOfType(asks.SecondService, typeof(TestMockTwo));
+            Assert.IsInstanceOf<TestMockTwo>(asks.SecondService);
         }
 
-        [TestMethod]
+        [Test]
         public void ReturnCachedInstanceTest()
         {
             var container = new PortableContainer();
@@ -167,7 +167,7 @@ namespace Portkit.UnitTests.Component
             Assert.AreSame(service1, service2);
         }
 
-        [TestMethod]
+        [Test]
         public void ReturnDifferentInstanceWhenRegisteredAsTransientsTest()
         {
             var container = new PortableContainer();
@@ -181,7 +181,7 @@ namespace Portkit.UnitTests.Component
             Assert.AreNotSame(service1, service2);
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveInstanceDifferentImplementationTest()
         {
             var container = new PortableContainer();
@@ -193,11 +193,11 @@ namespace Portkit.UnitTests.Component
             Assert.IsNotNull(services);
             Assert.IsTrue(services.Count == 2);
 
-            Assert.IsInstanceOfType(services[0], typeof(TestMockOne));
-            Assert.IsInstanceOfType(services[1], typeof(TestMockTwo));
+            Assert.IsInstanceOf<TestMockOne>(services[0]);
+            Assert.IsInstanceOf<TestMockTwo>(services[1]);
         }
 
-        [TestMethod]
+        [Test]
         public void RemoveAllDisposesObjectsTest()
         {
             var container = new PortableContainer();
@@ -211,7 +211,7 @@ namespace Portkit.UnitTests.Component
             container.RemoveAll<ITestMock>();
         }
 
-        [TestMethod]
+        [Test]
         public void RemovesAllTest()
         {
             PortableContainer container = new PortableContainer();
@@ -232,7 +232,7 @@ namespace Portkit.UnitTests.Component
             Assert.Fail();
         }
 
-        [TestMethod]
+        [Test]
         public void ResolveAllTest()
         {
             var container = new PortableContainer();
@@ -242,7 +242,7 @@ namespace Portkit.UnitTests.Component
 
             Assert.IsNotNull(services);
             Assert.IsTrue(services.Count == 1);
-            Assert.IsInstanceOfType(services[0], typeof(TestMockOne));
+            Assert.IsInstanceOf<TestMockOne>(services[0]);
         }
     }
 }

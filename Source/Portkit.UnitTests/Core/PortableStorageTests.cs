@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.ComponentModel;
 
 namespace Portkit.UnitTests.Core
 {
     [ExcludeFromCodeCoverage]
-    public static class StaticTestClass
+    public static class StaticTestFixture
     {
         private static readonly PortableStorage Storage = new PortableStorage(new Dictionary<string, object>());
 
@@ -35,22 +35,22 @@ namespace Portkit.UnitTests.Core
         }
     }
 
-    [TestClass, ExcludeFromCodeCoverage]
+    [TestFixture, ExcludeFromCodeCoverage]
     public class PortableStorageTests
     {
-        [TestMethod]
+        [Test]
         public void StaticCallerMemberPropertyTest()
         {
-            StaticTestClass.TestCallerMember = "test1";
-            var a = StaticTestClass.TestCallerMember;
+            StaticTestFixture.TestCallerMember = "test1";
+            var a = StaticTestFixture.TestCallerMember;
             Assert.IsTrue(a == "test1");
         }
 
-        [TestMethod]
+        [Test]
         public void StaticKeyExpressionPropertyTest()
         {
-            StaticTestClass.TestKeyExpression = "test2";
-            var a = StaticTestClass.TestKeyExpression;
+            StaticTestFixture.TestKeyExpression = "test2";
+            var a = StaticTestFixture.TestKeyExpression;
             Assert.IsTrue(a == "test2");
         }
     }

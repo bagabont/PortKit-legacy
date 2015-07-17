@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Portkit.Core.Extensions;
 
 namespace Portkit.UnitTests.Core
 {
-    [TestClass, ExcludeFromCodeCoverage]
+    [TestFixture, ExcludeFromCodeCoverage]
     public class StreamExTests
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times"), TestMethod]
+        [Test]
         public void CopyToDisposedStreamThrowsExceptionTest()
         {
             using (var sourceStream = new MemoryStream())
@@ -34,7 +34,7 @@ namespace Portkit.UnitTests.Core
             }
         }
 
-        [TestMethod]
+        [Test]
         public void CopyFromDisposedStreamThrowsExceptionTest()
         {
             var sourceStream = new MemoryStream();
@@ -55,7 +55,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(threw);
         }
 
-        [TestMethod]
+        [Test]
         public void CopyToNullStreamThrowsExceptionTest()
         {
             var sourceStream = new MemoryStream();
@@ -73,7 +73,7 @@ namespace Portkit.UnitTests.Core
             Assert.IsTrue(threw);
         }
 
-        [TestMethod]
+        [Test]
         public void CopySourceStreamToDestinationTest()
         {
             byte[] actualArray;
@@ -101,7 +101,7 @@ namespace Portkit.UnitTests.Core
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TryResetPositionTest()
         {
             using (var ms = new MemoryStream(new byte[] { 1, 2, 3, 4 }))
@@ -114,7 +114,7 @@ namespace Portkit.UnitTests.Core
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TryResetPositionFailsTest()
         {
             using (var ms = new UnseekableStream())
