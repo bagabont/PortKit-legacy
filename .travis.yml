@@ -1,2 +1,2 @@
 language: csharp
-solution: ./Source/Portkit.sln
+solution: Source/Portkit.sln
