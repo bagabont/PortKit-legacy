@@ -89,11 +89,11 @@ namespace Spb.Tv.Components.Threading
 
             if (!task.IsCompleted)
             {
-                WatchTaskAsync(task);
+                ObserveTask(task);
             }
         }
 
-        private void WatchTaskAsync(Task task)
+        private void ObserveTask(Task task)
         {
             try
             {
