@@ -99,30 +99,30 @@ namespace Spb.Tv.Components.Threading
             {
                 task.ContinueWith(t =>
                 {
-                    var propertyChanged = PropertyChanged;
-                    if (propertyChanged == null)
+                    var handler = PropertyChanged;
+                    if (handler == null)
                     {
                         return;
                     }
 
-                    propertyChanged(this, new PropertyChangedEventArgs("Status"));
-                    propertyChanged(this, new PropertyChangedEventArgs("IsCompleted"));
+                    handler(this, new PropertyChangedEventArgs("Status"));
+                    handler(this, new PropertyChangedEventArgs("IsCompleted"));
 
                     if (task.IsCanceled)
                     {
-                        propertyChanged(this, new PropertyChangedEventArgs("IsCanceled"));
+                        handler(this, new PropertyChangedEventArgs("IsCanceled"));
                     }
                     else if (task.IsFaulted)
                     {
-                        propertyChanged(this, new PropertyChangedEventArgs("IsFaulted"));
-                        propertyChanged(this, new PropertyChangedEventArgs("Exception"));
-                        propertyChanged(this, new PropertyChangedEventArgs("InnerException"));
-                        propertyChanged(this, new PropertyChangedEventArgs("ErrorMessage"));
+                        handler(this, new PropertyChangedEventArgs("IsFaulted"));
+                        handler(this, new PropertyChangedEventArgs("Exception"));
+                        handler(this, new PropertyChangedEventArgs("InnerException"));
+                        handler(this, new PropertyChangedEventArgs("ErrorMessage"));
                     }
                     else
                     {
-                        propertyChanged(this, new PropertyChangedEventArgs("IsSuccessful"));
-                        propertyChanged(this, new PropertyChangedEventArgs("Result"));
+                        handler(this, new PropertyChangedEventArgs("IsSuccessful"));
+                        handler(this, new PropertyChangedEventArgs("Result"));
                     }
                 });
             }
