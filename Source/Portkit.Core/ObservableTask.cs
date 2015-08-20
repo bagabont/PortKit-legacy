@@ -14,8 +14,7 @@ namespace Spb.Tv.Components.Threading
         {
             get
             {
-                return (Task.Status == TaskStatus.RanToCompletion) ?
-                    Task.Result : default(TResult);
+                return IsSuccessful ? Task.Result : default(TResult);
             }
         }
 
