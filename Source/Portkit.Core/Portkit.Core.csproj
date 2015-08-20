@@ -52,12 +52,12 @@
     <Compile Include="Extensions\EnumerableEx.cs" />
     <Compile Include="Extensions\ExpressionEx.cs" />
     <Compile Include="Extensions\GenericEx.cs" />
+    <Compile Include="Extensions\LinqEx.cs" />
     <Compile Include="Extensions\StreamEx.cs" />
     <Compile Include="Extensions\StringEx.cs" />
     <Compile Include="Net\HttpUtility.cs" />
     <Compile Include="Net\HttpValue.cs" />
     <Compile Include="Net\HttpValueCollection.cs" />
-    <Compile Include="ObservableTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
