@@ -15,6 +15,8 @@ namespace Portkit.ComponentModel.Threading
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private readonly TResult _defaultResult;
+
         /// <summary>
         /// Gets the <see cref="Task"/> that is being observed.
         /// </summary>
@@ -31,7 +33,7 @@ namespace Portkit.ComponentModel.Threading
         {
             get
             {
-                return IsSuccessful ? Task.Result : default(TResult);
+                return IsSuccessful ? Task.Result : _defaultResult;
             }
         }
 
@@ -141,18 +143,30 @@ namespace Portkit.ComponentModel.Threading
         }
 
         /// <summary>
-        /// 
+        /// Creates a new instance of the <see cref="ObserveTask"/> class.
         /// </summary>
-        /// <param name="task"></param>
+        /// <param name="task">Running task that is observed.</param>
+        /// <param name="defaultResult">Default result to initialize the task with.</param>
         /// <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the original context captured; otherwise, false.</param>
-        public ObservableTask(Task<TResult> task, bool continueOnCapturedContext = true)
+        public ObservableTask(Task<TResult> task, TResult defaultResult, bool continueOnCapturedContext = true)
         {
+            _defaultResult = defaultResult;
             Task = task;
 
             if (!task.IsCompleted)
             {
                 ObserveTask(task, continueOnCapturedContext);
             }
+        }
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="ObserveTask"/> class.
+        /// </summary>
+        /// <param name="task">Running task that is observed.</param>
+        /// <param name="continueOnCapturedContext">true to attempt to marshal the continuation back to the original context captured; otherwise, false.</param>
+        public ObservableTask(Task<TResult> task, bool continueOnCapturedContext) :
+            this(task, default(TResult), continueOnCapturedContext)
+        {
         }
 
         /// <summary>
