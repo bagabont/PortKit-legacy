@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F86DC5FA-FE48-4F8F-BFF5-6534C3812404}</ProjectGuid>
+    <ProjectGuid>{974AE643-AEB6-4118-8CD5-ECFC6008484D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Portkit.ComponentModel</RootNamespace>
-    <AssemblyName>Portkit.ComponentModel.UWP</AssemblyName>
+    <RootNamespace>Portkit.Net</RootNamespace>
+    <AssemblyName>Portkit.Net.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
@@ -107,11 +107,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="INavigationAware.cs" />
-    <Compile Include="ViewBase.cs" />
-    <EmbeddedResource Include="Properties\Portkit.ComponentModel.UWP.rd.xml" />
+    <EmbeddedResource Include="Properties\Portkit.Net.rd.xml" />
   </ItemGroup>
-  <Import Project="..\Portkit.ComponentModel.Shared\Portkit.ComponentModel.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

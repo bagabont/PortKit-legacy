@@ -1,12 +1,11 @@
 ﻿using System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
-using Portkit.ComponentModel;
 
-namespace Portkit.Windows
+namespace Portkit.ComponentModel
 {
     /// <summary>
-    /// Represents an adapter that can be passed to <see cref="Portkit.ComponentModel.ThreadDispatcher"/>.
+    /// Represents an adapter that can be passed to <see cref="IThreadDispatcher"/>.
     /// </summary>
     public class CoreDispatcherAdapter : IThreadDispatcher
     {
