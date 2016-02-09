@@ -3,27 +3,26 @@ using Moq;
 using System.ComponentModel;
 using NUnit.Framework;
 using Portkit.ComponentModel;
-using Portkit.ComponentModel.Threading;
 
 namespace Portkit.UnitTests.Component
 {
     [TestFixture, ExcludeFromCodeCoverage]
     public class PresenterObjectTests
     {
+        const string property = "TEST";
         private Mock<IThreadDispatcher> _dispatcherMock;
 
         [TestFixtureSetUp]
         public void Setup()
         {
             _dispatcherMock = new Mock<IThreadDispatcher>();
-            PresenterObject.UIDispatcher = _dispatcherMock.Object;
+            BindableObject.RegisterDispatcher(_dispatcherMock.Object);
         }
 
         [Test]
         public void PropertyChangedRaisesTest()
         {
-            var mock = new Mock<PresenterObject>();
-            const string property = "TEST";
+            var mock = new Mock<BindableObject>();
             mock.Object.PropertyChanged += (s, e) =>
                 Assert.AreEqual(e.PropertyName, property);
 
@@ -49,8 +48,7 @@ namespace Portkit.UnitTests.Component
         {
             _dispatcherMock.SetupGet(m => m.HasThreadAccess).Returns(true);
 
-            var presenterMock = new Mock<PresenterObject>();
-            const string property = "TEST";
+            var presenterMock = new Mock<BindableObject>();
             presenterMock.Object.PropertyChanged += (s, e) =>
                 Assert.AreEqual(e.PropertyName, property);
 
@@ -62,8 +60,7 @@ namespace Portkit.UnitTests.Component
         {
             _dispatcherMock.SetupGet(m => m.HasThreadAccess).Returns(false);
 
-            var presenterMock = new Mock<PresenterObject>();
-            const string property = "TEST";
+            var presenterMock = new Mock<BindableObject>();
             presenterMock.Object.PropertyChanged += (s, e) =>
                 Assert.AreEqual(e.PropertyName, property);
 

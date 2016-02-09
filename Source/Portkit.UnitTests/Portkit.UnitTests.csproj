@@ -78,10 +78,6 @@
       <Project>{2fcbfa0e-1180-4931-9869-7572a617a6e8}</Project>
       <Name>Portkit.ComponentModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Portkit.Core\Portkit.Core.csproj">
-      <Project>{ef0d9a66-1522-4f7f-9a15-3253cb19dee0}</Project>
-      <Name>Portkit.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Portkit.Logging\Portkit.Logging.csproj">
       <Project>{9c1e57b3-2bca-4f11-b25b-cccf5c64d306}</Project>
       <Name>Portkit.Logging</Name>

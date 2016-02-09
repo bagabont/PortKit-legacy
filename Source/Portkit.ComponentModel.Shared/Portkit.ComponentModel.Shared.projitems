@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c1c22489-261d-421d-9396-138ab9a1240c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Portkit.ComponentModel.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BindableObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BindableTask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContextDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CoreDispatcherAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IPropertyValidation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IThreadDispatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PortableStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertySupport.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyValidation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RelayCommandGeneric.cs" />
+  </ItemGroup>
+</Project>
