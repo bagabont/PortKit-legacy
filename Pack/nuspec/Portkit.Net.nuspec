@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Portkit.Net</id>
+    <version>$version$</version>
+    <title>Portkit Net</title>
+    <authors>Momchil Marinov</authors>
+    <owners>Momchil Marinov</owners>	
+    <licenseUrl>https://github.com/bagabont/portkit/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/bagabont/portkit</projectUrl>    
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Portkit.Net is an implementation collection of network and http design patterns.</description>
+    <summary>Portkit provides a collection of design patterns, reusable components and tools.</summary>    
+    <language>en-US</language>
+    <tags>portkit net http query uwp</tags>
+  </metadata>
+  <files>
+    <file src="..\..\Source\Portkit.Net.UWP\bin\Release\Portkit.*" target="lib\uap10.0\" exclude="**\*.pdb" />
+  </files>
+</package>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Portkit.ComponentModel</id>
+    <version>$version$</version>
+    <title>Portkit ComponentModel</title>
+    <authors>Momchil Marinov</authors>
+    <owners>Momchil Marinov</owners>	
+    <licenseUrl>https://github.com/bagabont/portkit/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/bagabont/portkit</projectUrl>    
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Portkit.ComponentModel is an implementation of a collection of architecture and design patterns to support application development.</description>
+    <summary>Portkit provides a collection of design patterns, reusable components and tools.</summary>    
+    <language>en-US</language>
+    <tags>portkit component model mvvm uwp</tags>
+  </metadata>
+  <files>
+    <file src="..\..\Source\Portkit.ComponentModel.UWP\bin\Release\Portkit.*" target="lib\uap10.0\" exclude="**\*.pdb" />
+  </files>
+</package>
