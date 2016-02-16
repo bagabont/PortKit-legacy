@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Cryptography\Sha1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EnumerableEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\GenericEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenericXmlSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StreamUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StringUtils.cs" />

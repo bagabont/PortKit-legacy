@@ -30,22 +30,25 @@ namespace Portkit.Time
             new HttpTimeSyncClient()
         };
 
-        private static TimeSpan _correctionOffset;
+        /// <summary>
+        /// Gets the difference between the network time and the system time.
+        /// </summary>
+        public static TimeSpan CorrectionOffset { get; private set; }
 
         /// <summary>
         /// Gets the current <see cref="DateTime"/> with the added correction offset.
         /// </summary>
-        public static DateTime Now =>
-            DateTime.Now.Add(_correctionOffset);
+        public static DateTime Now => DateTime.Now.Add(CorrectionOffset);
 
         /// <summary>
         /// Gets the current UTC <see cref="DateTime"/> with the added correction offset.
         /// </summary>
-        public static DateTime UtcNow =>
-            DateTime.Now.Add(_correctionOffset).ToUniversalTime();
+        public static DateTime UtcNow => DateTime.Now.Add(CorrectionOffset).ToUniversalTime();
 
         /// <summary>
-        /// Synchronizes the correction offset with a network acquired time.
+        /// Attempts to synchronize the correction offset with a network acquired time. 
+        /// If the synchronization fails, the method will fallback to the next available
+        /// client in <see cref="SynchronizationClients"/> list.
         /// </summary>
         public static async Task SynchronizeAsync()
         {
@@ -54,17 +57,14 @@ namespace Portkit.Time
                 try
                 {
                     var accurateUtcTime = await timeSyncClient.GetNetworkUtcTimeAsync(TimeoutPerClient);
-                    _correctionOffset = accurateUtcTime.ToLocalTime() - DateTime.Now;
-                    Debug.WriteLine($"Network time synchronized. Correction offset: {_correctionOffset}");
-
-                    // If synchronization succeeds, break the loop.
-                    return;
+                    CorrectionOffset = accurateUtcTime.ToLocalTime() - DateTime.Now;
+                    Debug.WriteLine($"Network time synchronized. Correction offset: {CorrectionOffset}");
+                    return; // If synchronization succeeds, break the loop.
                 }
                 catch
                 {
-                    // If an error is caught, 
-                    // attempt to synchronize the time via the next
-                    // fallback client
+                    // If an error is caught, attempt to 
+                    // synchronize time via the next available client
                     Debug.WriteLine("Synchronization failed. Using next fallback synchronization client.");
                 }
             }
@@ -75,7 +75,7 @@ namespace Portkit.Time
         /// </summary>
         public static void ResetCorrectionOffset()
         {
-            _correctionOffset = TimeSpan.Zero;
+            CorrectionOffset = TimeSpan.Zero;
         }
     }
 }

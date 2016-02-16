@@ -2,9 +2,9 @@
 using System.Reflection;
 
 [assembly: AssemblyTitle("Portkit.Time")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Portkit.Time is a library for network time synchronization between computer systems. It supports synchronization over NTP as well as HTTP protocols.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Momchil Marinov")]
 [assembly: AssemblyProduct("Portkit")]
 [assembly: AssemblyCopyright("Copyright © Momchil Marinov 2016")]
 [assembly: AssemblyTrademark("")]
