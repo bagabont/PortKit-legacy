@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.Foundation.Collections;
 using Windows.Storage;
-using Portkit.Utils;
+using Portkit.Utils.Extensions;
 
 namespace Portkit.Authorization
 {
@@ -52,7 +52,7 @@ namespace Portkit.Authorization
 
             // Serialize and encrypt the session, then save it
             var plainTextSession = _serializer.SerializeSession(session);
-            _store["session"] = StringUtils.Encrypt(plainTextSession, GetKey());
+            _store["session"] = plainTextSession.Encrypt(GetKey());
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Portkit.Authorization
                 }
 
                 // Decrypt and deserialize session
-                var plainTextSession = StringUtils.Decrypt(cipherTextSession, GetKey());
+                var plainTextSession = cipherTextSession.Decrypt(GetKey());
                 return _serializer.DeserializeSession<TSession>(plainTextSession);
             }
             catch (Exception)

@@ -4,18 +4,18 @@ using System.Text;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 
-namespace Portkit.Utils
+namespace Portkit.Utils.Extensions
 {
     /// <summary>
     /// String extensions class.
     /// </summary>
-    public static class StringUtils
+    public static class StringEx
     {
         /// <summary>
         /// Gets the SHA-1 hash of the string.
         /// </summary>
         /// <returns>SHA-1 hash value.</returns>
-        public static string GetSha1(string source)
+        public static string GetSha1(this string source)
         {
             Sha1 shaGenerator = new Sha1();
             return shaGenerator.ComputeHashString(Encoding.UTF8.GetBytes(source));
@@ -26,9 +26,9 @@ namespace Portkit.Utils
         /// with the string and ensures that the string does not require further escaping.        
         /// </summary>
         /// <returns>A System.Boolean value that is true if the string was well-formed; else false</returns>
-        public static bool IsWellFormedUri(string source)
+        public static bool IsWellFormedUri(this string source)
         {
-            return !string.IsNullOrEmpty(source) && Uri.IsWellFormedUriString(source, UriKind.RelativeOrAbsolute);
+            return IsWellFormedUri(source, UriKind.RelativeOrAbsolute);
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace Portkit.Utils
         /// with the string and ensures that the string does not require further escaping.        
         /// </summary>
         /// <returns>A System.Boolean value that is true if the string was well-formed; else false</returns>
-        public static bool IsWellFormedUri(string source, UriKind uriKind)
+        public static bool IsWellFormedUri(this string source, UriKind uriKind)
         {
-            return Uri.IsWellFormedUriString(source, uriKind);
+            return !string.IsNullOrWhiteSpace(source) && Uri.IsWellFormedUriString(source, UriKind.RelativeOrAbsolute);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Portkit.Utils
         /// </summary>
         /// <param name="text">The source text.</param>
         /// <returns>Extended ASCII string.</returns>
-        public static string ToExtendedAscii(string text)
+        public static string ToExtendedAscii(this string text)
         {
             var sb = new StringBuilder();
             foreach (var c in text)
@@ -70,15 +70,15 @@ namespace Portkit.Utils
         /// </summary>
         /// <param name="input">Source string</param>
         /// <returns>True if string looks like JSON, otherwise false.</returns>
-        public static bool IsJson(string input)
+        public static bool IsJson(this string input)
         {
-            if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(input))
             {
                 return false;
             }
             input = input.Trim();
-            return input.StartsWith("{") && input.EndsWith("}")
-                   || input.StartsWith("[") && input.EndsWith("]");
+            return input.StartsWith("{") && input.EndsWith("}") ||
+                   input.StartsWith("[") && input.EndsWith("]");
         }
 
         /// <summary>
@@ -86,9 +86,9 @@ namespace Portkit.Utils
         /// </summary>
         /// <param name="input">Source string</param>
         /// <returns>True if string looks like XML, otherwise false.</returns>
-        public static bool IsXml(string input)
+        public static bool IsXml(this string input)
         {
-            if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(input))
             {
                 return false;
             }
@@ -100,33 +100,24 @@ namespace Portkit.Utils
         /// Takes a substring between two anchor strings (or the end of the string if that anchor is null)
         /// </summary>
         /// <param name="data">String to operate on</param>
-        /// <param name="from">Optional string to search after</param>
-        /// <param name="until">Optional string to search before</param>
+        /// <param name="fromText">Optional string to search after</param>
+        /// <param name="untilText">Optional string to search before</param>
         /// <param name="comparison">Optional comparison for the search</param>
         /// <returns>Substring based on the search</returns>
-        public static string Extract(string data, string from = null, string until = null, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
+        public static string Extract(this string data, string fromText = null, string untilText = null, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
         {
-            var fromLength = (from ?? string.Empty).Length;
-            var startIndex = !string.IsNullOrEmpty(from)
-                ? data.IndexOf(from, comparison) + fromLength
-                : 0;
-
+            var fromLength = (fromText ?? string.Empty).Length;
+            var startIndex = !string.IsNullOrWhiteSpace(fromText) ? data.IndexOf(fromText, comparison) + fromLength : 0;
             if (startIndex < fromLength)
             {
-                throw new ArgumentException("from: Failed to find an instance of the first anchor");
+                throw new ArgumentException("Failed to find an instance of the first anchor", nameof(fromText));
             }
-
-            var endIndex = !string.IsNullOrEmpty(until)
-            ? data.IndexOf(until, startIndex, comparison)
-            : data.Length;
-
+            var endIndex = !string.IsNullOrWhiteSpace(untilText) ? data.IndexOf(untilText, startIndex, comparison) : data.Length;
             if (endIndex < 0)
             {
-                throw new ArgumentException("until: Failed to find an instance of the last anchor");
+                throw new ArgumentException("Failed to find an instance of the last anchor", nameof(untilText));
             }
-
-            var subString = data.Substring(startIndex, endIndex - startIndex);
-            return subString;
+            return data.Substring(startIndex, endIndex - startIndex);
         }
 
         /// <summary>
@@ -135,7 +126,7 @@ namespace Portkit.Utils
         /// <param name="plainText">Plain text to encrypt.</param>
         /// <param name="key">Encryption key.</param>
         /// <returns>Encrypted text string.</returns>
-        public static string Encrypt(string plainText, string key)
+        public static string Encrypt(this string plainText, string key)
         {
             var keyHash = CryptographicBuffer.ConvertStringToBinary(key, BinaryStringEncoding.Utf8);
             var plainBuffer = CryptographicBuffer.ConvertStringToBinary(plainText, BinaryStringEncoding.Utf8);
@@ -152,7 +143,7 @@ namespace Portkit.Utils
         /// <param name="cipherText">Cipher text to decrypt.</param>
         /// <param name="key">Encrypted key, used to encrypt the text string.</param>
         /// <returns>Plain text string.</returns>
-        public static string Decrypt(string cipherText, string key)
+        public static string Decrypt(this string cipherText, string key)
         {
             var keyHash = CryptographicBuffer.ConvertStringToBinary(key, BinaryStringEncoding.Utf8);
             var cipherBuffer = CryptographicBuffer.DecodeFromBase64String(cipherText);

@@ -2,9 +2,6 @@
 
 namespace Portkit.Utils.Extensions
 {
-    /// <summary>
-    /// Extension class.
-    /// </summary>
     public static class GenericEx
     {
         public static TResult With<TInput, TResult>(this TInput o, Func<TInput, TResult> evaluator)
@@ -38,6 +35,7 @@ namespace Portkit.Utils.Extensions
         {
             return o == null ? null : (evaluator(o) ? null : o);
         }
+
         /// <summary>
         /// Executes an action when an input object is null.
         /// </summary>

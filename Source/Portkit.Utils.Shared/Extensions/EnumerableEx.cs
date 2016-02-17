@@ -11,6 +11,9 @@ namespace Portkit.Utils.Extensions
     /// </summary>
     public static class EnumerableEx
     {
+        /// <summary>
+        /// Computes the weighted average of a collection.
+        /// </summary>
         public static double WeightedAverage<T>(this IList<T> collection, Func<T, double> value, Func<T, double> weight)
         {
             double weightedValueSum = collection.Sum(x => value(x) * weight(x));
@@ -33,7 +36,7 @@ namespace Portkit.Utils.Extensions
         /// <returns>True if sequence is null or there are no elements, otherwise returns false.</returns>
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> data)
         {
-            return data == null || !data.Any();
+            return data?.Any() == null;
         }
 
         /// <summary>
