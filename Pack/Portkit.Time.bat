@@ -1,3 +1,3 @@
 @ECHO off
-SET project_dir="..\Source\Portkit.Time.UWP\Portkit.Time.UWP.csproj"
+SET project_dir="..\Source\Portkit.sln"
 CALL NuGet.Pack.bat %project_dir% "nuspec\Portkit.Time.nuspec"

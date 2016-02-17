@@ -11,5 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CollectionTests\MockStringEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CollectionTests\TypeSafeEnumTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeTests\HttpTimeSyncClientTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeTests\NtpTimeSyncClientTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeTests\SynchronizedDateTimeTests.cs" />
   </ItemGroup>
 </Project>
