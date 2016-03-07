@@ -39,18 +39,19 @@ namespace Portkit.ComponentModel
         protected virtual void OnPropertyChanged(string propertyName)
         {
             var handler = PropertyChanged;
-            if (handler == null || !EnableDispatching)
+            if (handler == null)
             {
                 return;
             }
-
-            if (_dispatcher != null && !_dispatcher.HasThreadAccess)
+            var args = new PropertyChangedEventArgs(propertyName);
+            var dispatch = EnableDispatching && _dispatcher != null && !_dispatcher.HasThreadAccess;
+            if (dispatch)
             {
-                _dispatcher.Run(() => handler(this, new PropertyChangedEventArgs(propertyName)));
+                _dispatcher.Run(() => handler.Invoke(this, args));
             }
             else
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                handler(this, args);
             }
         }
 
@@ -79,10 +80,7 @@ namespace Portkit.ComponentModel
         /// <typeparam name="T">Property type.</typeparam>
         /// <param name="propertyExpression">Property expression, that provides the name of the property that changed,
         ///  in order to avoid using "magic strings".</param>
-        protected virtual void SetProperty<T>(Expression<Func<T>> propertyExpression)
-        {
-            var propertyName = PropertySupport.ExtractPropertyName(propertyExpression);
-            OnPropertyChanged(propertyName);
-        }
+        protected virtual void SetProperty<T>(Expression<Func<T>> propertyExpression) =>
+            OnPropertyChanged(PropertySupport.ExtractPropertyName(propertyExpression));
     }
 }

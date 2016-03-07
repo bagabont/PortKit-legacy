@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Portkit.Utils.Extensions
+namespace Portkit
 {
-    public static class GenericEx
+    internal static class GenericEx
     {
         public static TResult With<TInput, TResult>(this TInput o, Func<TInput, TResult> evaluator)
             where TResult : class

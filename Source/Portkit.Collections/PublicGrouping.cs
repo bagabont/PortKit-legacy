@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Portkit.Utils.Collections
+namespace Portkit.Collections
 {
     /// <summary>
     /// A class used to expose the Key property on a dynamically-created Linq grouping.

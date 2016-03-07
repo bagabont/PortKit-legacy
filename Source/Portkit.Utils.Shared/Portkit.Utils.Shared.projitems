@@ -9,18 +9,11 @@
     <Import_RootNamespace>Portkit.Utils.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Caching\CacheItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Caching\CacheItemPolicy.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Caching\CacheItemPriority.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Caching\PortableMemoryCache.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Collections\GroupedEnumerable.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Collections\PublicGrouping.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Collections\TypeSafeEnum.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Cryptography\Sha1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DateTimeEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EnumerableEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\GenericEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\StorageItemEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringEx.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GenericXmlSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sha1.cs" />
   </ItemGroup>
 </Project>

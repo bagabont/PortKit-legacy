@@ -140,24 +140,24 @@ namespace Portkit.ComponentModel
                 return;
             }
 
-            handler(this, new PropertyChangedEventArgs("Status"));
-            handler(this, new PropertyChangedEventArgs("IsCompleted"));
+            handler(this, new PropertyChangedEventArgs(nameof(Status)));
+            handler(this, new PropertyChangedEventArgs(nameof(IsCompleted)));
 
             if (task.IsCanceled)
             {
-                handler(this, new PropertyChangedEventArgs("IsCanceled"));
+                handler(this, new PropertyChangedEventArgs(nameof(IsCanceled)));
             }
             else if (task.IsFaulted)
             {
-                handler(this, new PropertyChangedEventArgs("IsFaulted"));
-                handler(this, new PropertyChangedEventArgs("Exception"));
-                handler(this, new PropertyChangedEventArgs("InnerException"));
-                handler(this, new PropertyChangedEventArgs("ErrorMessage"));
+                handler(this, new PropertyChangedEventArgs(nameof(IsFaulted)));
+                handler(this, new PropertyChangedEventArgs(nameof(Exception)));
+                handler(this, new PropertyChangedEventArgs(nameof(InnerException)));
+                handler(this, new PropertyChangedEventArgs(nameof(ErrorMessage)));
             }
             else
             {
-                handler(this, new PropertyChangedEventArgs("IsSuccessful"));
-                handler(this, new PropertyChangedEventArgs("Result"));
+                handler(this, new PropertyChangedEventArgs(nameof(IsSuccessful)));
+                handler(this, new PropertyChangedEventArgs(nameof(Result)));
             }
         }
     }

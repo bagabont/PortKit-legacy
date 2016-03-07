@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Portkit.Time
+namespace Portkit.Extensions
 {
     /// <summary>
     /// Data time extensions class.

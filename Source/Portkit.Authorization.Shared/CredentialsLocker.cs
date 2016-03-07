@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using Windows.Security.Credentials;
-using Portkit.Utils.Extensions;
 
 namespace Portkit.Authorization
 {
     /// <summary>
-    /// Represents a wrapper around <see cref="PasswordVault"/> to securely store credentials.
+    /// Represents a class that securely stores credentials.
     /// </summary>
     public class CredentialsLocker : ICredentialsLocker
     {
@@ -38,7 +36,6 @@ namespace Portkit.Authorization
         /// </summary>
         /// <param name="userName">Username.</param>
         /// <param name="password">Password.</param>
-        [DebuggerStepThrough]
         public void Save(string userName, string password)
         {
             lock (_syncLock)
@@ -52,7 +49,6 @@ namespace Portkit.Authorization
         /// Clears stored credentials.
         /// </summary>
         /// <returns>If successfully removed credentials, returns true, otherwise false.</returns>
-        [DebuggerStepThrough]
         public bool Delete()
         {
             lock (_syncLock)
@@ -60,7 +56,7 @@ namespace Portkit.Authorization
                 try
                 {
                     var credentials = _vault.FindAllByResource(_resource);
-                    if (credentials.IsNullOrEmpty())
+                    if (credentials == null || credentials.Any() == false)
                     {
                         return false;
                     }
@@ -81,7 +77,6 @@ namespace Portkit.Authorization
         /// Checks if there are any credentials stored.
         /// </summary>
         /// <returns>True if credentials are found, otherwise false.</returns>
-        [DebuggerStepThrough]
         public bool CheckIsEmpty()
         {
             lock (_syncLock)
@@ -103,7 +98,6 @@ namespace Portkit.Authorization
         /// Gets the stored <see cref="PasswordCredential"/>.
         /// </summary>
         /// <returns>Instance of <see cref="PasswordCredential"/></returns>
-        [DebuggerStepThrough]
         public PasswordCredential GetCredentials()
         {
             lock (_syncLock)

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Portkit.Utils.Collections
+namespace Portkit.Collections
 {
     /// <summary>
     /// An enumerable data structure that contains grouped values by key.

@@ -9,6 +9,8 @@
     <Import_RootNamespace>Portkit.Net.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)HttpClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HttpCacheHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpUtility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpValue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpValueCollection.cs" />

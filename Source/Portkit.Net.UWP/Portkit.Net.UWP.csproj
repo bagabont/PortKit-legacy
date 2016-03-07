@@ -109,6 +109,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Portkit.Net.rd.xml" />
   </ItemGroup>
+  <Import Project="..\Portkit.Net.Shared\Portkit.Net.Shared.projitems" Label="Shared" />
+  <Import Project="..\Portkit.Cache\Portkit.Cache.projitems" Label="Shared" />
+  <Import Project="..\Portkit.Utils.Shared\Portkit.Utils.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

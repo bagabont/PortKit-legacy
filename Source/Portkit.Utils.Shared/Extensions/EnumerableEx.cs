@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Portkit.Utils.Extensions
+namespace Portkit
 {
     /// <summary>
     /// Enumerable extensions class.
     /// </summary>
-    public static class EnumerableEx
+    internal static class EnumerableEx
     {
         /// <summary>
         /// Computes the weighted average of a collection.

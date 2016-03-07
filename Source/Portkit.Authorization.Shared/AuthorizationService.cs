@@ -9,6 +9,9 @@ namespace Portkit.Authorization
     {
         private readonly IList<ISessionProvider> _providers;
 
+        /// <summary>
+        /// Gets the <see cref="ISessionProvider"/> provider.
+        /// </summary>
         public ISessionProvider Provider { get; private set; }
 
         public AuthorizationService(IList<ISessionProvider> providers)
@@ -38,8 +41,7 @@ namespace Portkit.Authorization
             var provider = _providers.FirstOrDefault(p => p.Id == session.ProviderId);
             if (provider == null)
             {
-                var message = $"Cannot find provider with ID: '{session.ProviderId}'.";
-                throw new IndexOutOfRangeException(message);
+                throw new IndexOutOfRangeException($"Cannot find provider with ID: '{session.ProviderId}'.");
             }
             await provider.LogoutAsync();
         }

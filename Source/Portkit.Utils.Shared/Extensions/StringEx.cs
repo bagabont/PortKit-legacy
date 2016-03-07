@@ -1,24 +1,20 @@
-﻿using Portkit.Utils.Cryptography;
-using System;
+﻿using System;
 using System.Text;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
+using Portkit.Cryptography;
 
-namespace Portkit.Utils.Extensions
+namespace Portkit
 {
     /// <summary>
     /// String extensions class.
     /// </summary>
-    public static class StringEx
+    internal static class StringEx
     {
-        /// <summary>
-        /// Gets the SHA-1 hash of the string.
-        /// </summary>
-        /// <returns>SHA-1 hash value.</returns>
         public static string GetSha1(this string source)
         {
-            Sha1 shaGenerator = new Sha1();
-            return shaGenerator.ComputeHashString(Encoding.UTF8.GetBytes(source));
+            var sha1 = new Sha1();
+            return sha1.ComputeHashString(Encoding.UTF8.GetBytes(source));
         }
 
         /// <summary>

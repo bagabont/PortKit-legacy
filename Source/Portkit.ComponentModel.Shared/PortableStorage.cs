@@ -42,13 +42,7 @@ namespace Portkit.ComponentModel
         /// <summary>
         /// Gets the number of elements contained in the PortableStorage.
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return _storage.Count;
-            }
-        }
+        public int Count => _storage.Count;
 
         /// <summary>
         /// Gets or sets the element with the specified key.

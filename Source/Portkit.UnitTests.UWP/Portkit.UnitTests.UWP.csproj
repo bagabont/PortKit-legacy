@@ -127,10 +127,6 @@
       <Project>{bc9e0b66-3304-43ee-9dc8-2184bc5582c2}</Project>
       <Name>Portkit.Time.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Portkit.Utils.UWP\Portkit.Utils.UWP.csproj">
-      <Project>{0c1e45dd-edb8-4b37-bbfb-74e27b64b5e3}</Project>
-      <Name>Portkit.Utils.UWP</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

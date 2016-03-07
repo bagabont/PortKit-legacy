@@ -1,6 +1,6 @@
 using System;
 
-namespace Portkit.Utils.Collections
+namespace Portkit.Collections
 {
     public abstract class TypeSafeEnum<T> : IEquatable<TypeSafeEnum<T>>, IComparable<TypeSafeEnum<T>>
         where T : IComparable<T>, IEquatable<T>

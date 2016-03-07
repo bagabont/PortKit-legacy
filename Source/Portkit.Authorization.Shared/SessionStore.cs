@@ -1,27 +1,25 @@
 ﻿using System;
 using Windows.Foundation.Collections;
 using Windows.Storage;
-using Portkit.Utils.Extensions;
 
 namespace Portkit.Authorization
 {
     /// <summary>
-    /// Represents a container storage class, for handling sensitive session data.
+    /// Represents a storage class, for handling sensitive session data.
     /// </summary>
-    public class SessionStore<TSession> : ISessionStore<TSession> where TSession : ISession
+    public abstract class SessionStore<TSession> : ISessionStore<TSession> where TSession : ISession
     {
-        private const string DEFAULT_ENCRYPTION_KEY =
-            "jc6szKQNv?m52FHQ!FC=N=jZ%mm*2%A#4aH_N5&9C9ApHEWmb-8gu$tEGq^Dtk*&5A7*C8$wgaWP8r44VSM+ppDskLK2w?5L!z27cc7XxQNJYjt8wKdfr=_NDDG*6+FD";
-
+        private const string DEFAULT_SECURITY_KEY = "jc6szKQNv?m52FHQ!FC=N=jZ%mm*2%A#4aH_N5&9C9ApHEWmb-8gu$tEGq^Dtk*&5A7*C8$wgaWP8r44VSM+ppDskLK2w?5L!z27cc7XxQNJYjt8wKdfr=_NDDG*6+FD";
         private readonly ICredentialsLocker _locker;
         private readonly ISessionSerializer _serializer;
+        private readonly string _securityKey;
         private readonly IPropertySet _store;
 
         /// <summary>
         /// Creates an instance of <see cref="SessionStore{TSession}"/> class.
         /// </summary>
-        public SessionStore() :
-            this(new CredentialsLocker(), new SessionSerializer())
+        protected SessionStore() :
+            this(new CredentialsLocker(), new SessionSerializer(), DEFAULT_SECURITY_KEY)
         {
         }
 
@@ -32,10 +30,12 @@ namespace Portkit.Authorization
         ///  which provides secured storage for sensitive data.</param>
         /// <param name="serializer">An implementation of <see cref="ISessionSerializer"/> for 
         /// serializing and deserializing session data.</param>
-        public SessionStore(ICredentialsLocker locker, ISessionSerializer serializer)
+        /// <param name="securityKey">Security key used to encrypt/decrypt session.</param>
+        protected SessionStore(ICredentialsLocker locker, ISessionSerializer serializer, string securityKey)
         {
             _locker = locker;
             _serializer = serializer;
+            _securityKey = securityKey;
             var localSettings = ApplicationData.Current.LocalSettings;
             var container = localSettings.CreateContainer("session-container", ApplicationDataCreateDisposition.Always);
             _store = container.Values;
@@ -93,7 +93,7 @@ namespace Portkit.Authorization
             var credential = _locker.GetCredentials();
 
             // Generate key by appending credentials to the default key.
-            return $"{DEFAULT_ENCRYPTION_KEY}{credential?.Password ?? ""}";
+            return $"{_securityKey}{credential?.Password ?? string.Empty}";
         }
     }
 }

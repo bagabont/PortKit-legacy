@@ -9,7 +9,6 @@
     <Import_RootNamespace>Portkit.Time.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)DateTimeEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpTimeSyncClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ITimeSyncClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NtpTimeSyncClient.cs" />

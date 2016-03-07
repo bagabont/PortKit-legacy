@@ -25,11 +25,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portkit.Net.Shared", "Portk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portkit.Net.UWP", "Portkit.Net.UWP\Portkit.Net.UWP.csproj", "{974AE643-AEB6-4118-8CD5-ECFC6008484D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portkit.Utils", "Portkit.Utils", "{44BEFBED-A1B3-4486-A98F-0689B5E635B8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portkit.Utils.UWP", "Portkit.Utils.UWP\Portkit.Utils.UWP.csproj", "{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portkit.Utils.Shared", "Portkit.Utils.Shared\Portkit.Utils.Shared.shproj", "{3F77D4F2-FA7D-43A7-87E5-0A5FF7419670}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "Portkit.Utils.Shared\Common.shproj", "{3F77D4F2-FA7D-43A7-87E5-0A5FF7419670}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portkit.Authorization", "Portkit.Authorization", "{5D71E017-AF08-4E1E-AA3E-2B5619CE8E12}"
 EndProject
@@ -37,28 +33,33 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portkit.Authorization.Share
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portkit.Authorization.UWP", "Portkit.Authorization.UWP\Portkit.Authorization.UWP.csproj", "{F142AC98-78C1-4388-98DD-2EDDEE60C1C9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{441F9CB2-BC9C-4A17-8444-92279DC136CC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portkit.UnitTests.UWP", "Portkit.UnitTests.UWP\Portkit.UnitTests.UWP.csproj", "{3B8E3DF9-C637-451D-807A-5648E3508F77}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portkit.UnitTests.Shared", "Portkit.UnitTests.Shared\Portkit.UnitTests.Shared.shproj", "{65D8655C-22BB-4DBD-94FC-FDF754B81FB9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portkit.Time.WindowsPhone", "Portkit.Time.WindowsPhone\Portkit.Time.WindowsPhone.csproj", "{9E393B2C-325E-40BA-9183-4BC8646553D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portkit.Time.Windows", "Portkit.Time.Windows\Portkit.Time.Windows.csproj", "{855E8809-517B-4F4C-9742-506B6036F858}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portkit.Cache", "Portkit.Cache", "{DF815F72-95F8-48EA-8933-DA4489FFF52D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portkit.Cache", "Portkit.Cache\Portkit.Cache.shproj", "{91A5C548-2FA1-4B3C-BD6D-4EC6C99714CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portkit.Collections", "Portkit.Collections", "{F502E2BA-2204-4CF5-9A9F-6B495D6B6A33}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Portkit.Collections", "Portkit.Collections\Portkit.Collections.shproj", "{0A075A82-2FE7-477D-BFCC-6B0DE5497455}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Portkit.Time.Shared\Portkit.Time.Shared.projitems*{855e8809-517b-4f4c-9742-506b6036f858}*SharedItemsImports = 4
 		Portkit.Time.Shared\Portkit.Time.Shared.projitems*{84afdf32-bff7-4c73-9786-b221ed4c2ae5}*SharedItemsImports = 13
-		Portkit.Utils.Shared\Portkit.Utils.Shared.projitems*{0c1e45dd-edb8-4b37-bbfb-74e27b64b5e3}*SharedItemsImports = 4
+		Portkit.Utils.Shared\Portkit.Utils.Shared.projitems*{f142ac98-78c1-4388-98dd-2eddee60c1c9}*SharedItemsImports = 4
 		Portkit.Authorization.Shared\Portkit.Authorization.projitems*{f142ac98-78c1-4388-98dd-2eddee60c1c9}*SharedItemsImports = 4
-		Portkit.UnitTests.Shared\Portkit.UnitTests.Shared.projitems*{3b8e3df9-c637-451d-807a-5648e3508f77}*SharedItemsImports = 4
 		Portkit.Time.Shared\Portkit.Time.Shared.projitems*{bc9e0b66-3304-43ee-9dc8-2184bc5582c2}*SharedItemsImports = 4
-		Portkit.UnitTests.Shared\Portkit.UnitTests.Shared.projitems*{65d8655c-22bb-4dbd-94fc-fdf754b81fb9}*SharedItemsImports = 13
 		Portkit.Utils.Shared\Portkit.Utils.Shared.projitems*{3f77d4f2-fa7d-43a7-87e5-0a5ff7419670}*SharedItemsImports = 13
+		Portkit.Cache\Portkit.Cache.projitems*{974ae643-aeb6-4118-8cd5-ecfc6008484d}*SharedItemsImports = 4
+		Portkit.Utils.Shared\Portkit.Utils.Shared.projitems*{974ae643-aeb6-4118-8cd5-ecfc6008484d}*SharedItemsImports = 4
+		Portkit.Net.Shared\Portkit.Net.Shared.projitems*{974ae643-aeb6-4118-8cd5-ecfc6008484d}*SharedItemsImports = 4
 		Portkit.Time.Shared\Portkit.Time.Shared.projitems*{9e393b2c-325e-40ba-9183-4bc8646553d0}*SharedItemsImports = 4
+		Portkit.Cache\Portkit.Cache.projitems*{91a5c548-2fa1-4b3c-bd6d-4ec6c99714cb}*SharedItemsImports = 13
 		Portkit.ComponentModel.Shared\Portkit.ComponentModel.Shared.projitems*{c1c22489-261d-421d-9396-138ab9a1240c}*SharedItemsImports = 13
+		Portkit.Collections\Portkit.Collections.projitems*{0a075a82-2fe7-477d-bfcc-6b0de5497455}*SharedItemsImports = 13
 		Portkit.Net.Shared\Portkit.Net.Shared.projitems*{7398fa34-7b25-46ba-a6b2-595c613b3ce4}*SharedItemsImports = 13
 		Portkit.Authorization.Shared\Portkit.Authorization.projitems*{c1d986c2-1e2a-4a10-aab6-81648a8c4c4c}*SharedItemsImports = 13
 		Portkit.ComponentModel.Shared\Portkit.ComponentModel.Shared.projitems*{f86dc5fa-fe48-4f8f-bff5-6534c3812404}*SharedItemsImports = 4
@@ -138,22 +139,6 @@ Global
 		{974AE643-AEB6-4118-8CD5-ECFC6008484D}.Release|x64.Build.0 = Release|x64
 		{974AE643-AEB6-4118-8CD5-ECFC6008484D}.Release|x86.ActiveCfg = Release|x86
 		{974AE643-AEB6-4118-8CD5-ECFC6008484D}.Release|x86.Build.0 = Release|x86
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Debug|ARM.ActiveCfg = Debug|ARM
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Debug|ARM.Build.0 = Debug|ARM
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Debug|x64.ActiveCfg = Debug|x64
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Debug|x64.Build.0 = Debug|x64
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Debug|x86.ActiveCfg = Debug|x86
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Debug|x86.Build.0 = Debug|x86
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Release|ARM.ActiveCfg = Release|ARM
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Release|ARM.Build.0 = Release|ARM
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Release|x64.ActiveCfg = Release|x64
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Release|x64.Build.0 = Release|x64
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Release|x86.ActiveCfg = Release|x86
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3}.Release|x86.Build.0 = Release|x86
 		{F142AC98-78C1-4388-98DD-2EDDEE60C1C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F142AC98-78C1-4388-98DD-2EDDEE60C1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F142AC98-78C1-4388-98DD-2EDDEE60C1C9}.Debug|ARM.ActiveCfg = Debug|ARM
@@ -170,27 +155,6 @@ Global
 		{F142AC98-78C1-4388-98DD-2EDDEE60C1C9}.Release|x64.Build.0 = Release|x64
 		{F142AC98-78C1-4388-98DD-2EDDEE60C1C9}.Release|x86.ActiveCfg = Release|x86
 		{F142AC98-78C1-4388-98DD-2EDDEE60C1C9}.Release|x86.Build.0 = Release|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|Any CPU.Build.0 = Debug|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|ARM.ActiveCfg = Debug|ARM
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|ARM.Build.0 = Debug|ARM
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|ARM.Deploy.0 = Debug|ARM
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|x64.ActiveCfg = Debug|x64
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|x64.Build.0 = Debug|x64
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|x64.Deploy.0 = Debug|x64
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|x86.ActiveCfg = Debug|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|x86.Build.0 = Debug|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Debug|x86.Deploy.0 = Debug|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|Any CPU.ActiveCfg = Release|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|ARM.ActiveCfg = Release|ARM
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|ARM.Build.0 = Release|ARM
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|ARM.Deploy.0 = Release|ARM
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|x64.ActiveCfg = Release|x64
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|x64.Build.0 = Release|x64
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|x64.Deploy.0 = Release|x64
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|x86.ActiveCfg = Release|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|x86.Build.0 = Release|x86
-		{3B8E3DF9-C637-451D-807A-5648E3508F77}.Release|x86.Deploy.0 = Release|x86
 		{9E393B2C-325E-40BA-9183-4BC8646553D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9E393B2C-325E-40BA-9183-4BC8646553D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E393B2C-325E-40BA-9183-4BC8646553D0}.Debug|ARM.ActiveCfg = Debug|ARM
@@ -235,13 +199,11 @@ Global
 		{BC9E0B66-3304-43EE-9DC8-2184BC5582C2} = {F238D00A-5958-46B3-9319-708309EDFB82}
 		{7398FA34-7B25-46BA-A6B2-595C613B3CE4} = {B6DD4925-EA12-4F09-BC13-28711F4B927A}
 		{974AE643-AEB6-4118-8CD5-ECFC6008484D} = {B6DD4925-EA12-4F09-BC13-28711F4B927A}
-		{0C1E45DD-EDB8-4B37-BBFB-74E27B64B5E3} = {44BEFBED-A1B3-4486-A98F-0689B5E635B8}
-		{3F77D4F2-FA7D-43A7-87E5-0A5FF7419670} = {44BEFBED-A1B3-4486-A98F-0689B5E635B8}
 		{C1D986C2-1E2A-4A10-AAB6-81648A8C4C4C} = {5D71E017-AF08-4E1E-AA3E-2B5619CE8E12}
 		{F142AC98-78C1-4388-98DD-2EDDEE60C1C9} = {5D71E017-AF08-4E1E-AA3E-2B5619CE8E12}
-		{3B8E3DF9-C637-451D-807A-5648E3508F77} = {441F9CB2-BC9C-4A17-8444-92279DC136CC}
-		{65D8655C-22BB-4DBD-94FC-FDF754B81FB9} = {441F9CB2-BC9C-4A17-8444-92279DC136CC}
 		{9E393B2C-325E-40BA-9183-4BC8646553D0} = {F238D00A-5958-46B3-9319-708309EDFB82}
 		{855E8809-517B-4F4C-9742-506B6036F858} = {F238D00A-5958-46B3-9319-708309EDFB82}
+		{91A5C548-2FA1-4B3C-BD6D-4EC6C99714CB} = {DF815F72-95F8-48EA-8933-DA4489FFF52D}
+		{0A075A82-2FE7-477D-BFCC-6B0DE5497455} = {F502E2BA-2204-4CF5-9A9F-6B495D6B6A33}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Portkit.Utils.Cryptography
+namespace Portkit.Cryptography
 {
     /// <summary>
     /// Represents basic SHA-1 class that provides hash computation. 
