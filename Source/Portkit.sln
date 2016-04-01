@@ -48,8 +48,8 @@ Global
 		Portkit.Authorization.Shared\Portkit.Authorization.projitems*{f142ac98-78c1-4388-98dd-2eddee60c1c9}*SharedItemsImports = 4
 		Portkit.Time.Shared\Portkit.Time.Shared.projitems*{bc9e0b66-3304-43ee-9dc8-2184bc5582c2}*SharedItemsImports = 4
 		Portkit.Extensions.Shared\Portkit.Extensions.Shared.projitems*{82e95620-7e04-4ac7-9cb4-2c0e33a260a2}*SharedItemsImports = 4
-		Portkit.Cache\Portkit.Cache.projitems*{974ae643-aeb6-4118-8cd5-ecfc6008484d}*SharedItemsImports = 4
 		Portkit.Net.Shared\Portkit.Net.Shared.projitems*{974ae643-aeb6-4118-8cd5-ecfc6008484d}*SharedItemsImports = 4
+		Portkit.Cache\Portkit.Cache.projitems*{974ae643-aeb6-4118-8cd5-ecfc6008484d}*SharedItemsImports = 4
 		Portkit.Time.Shared\Portkit.Time.Shared.projitems*{9e393b2c-325e-40ba-9183-4bc8646553d0}*SharedItemsImports = 4
 		Portkit.Cache\Portkit.Cache.projitems*{91a5c548-2fa1-4b3c-bd6d-4ec6c99714cb}*SharedItemsImports = 13
 		Portkit.Extensions.Shared\Portkit.Extensions.Shared.projitems*{d5c153d6-4fec-4654-91ff-68282f14da6f}*SharedItemsImports = 13
