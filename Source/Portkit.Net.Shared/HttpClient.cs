@@ -9,16 +9,16 @@ using Portkit.Extensions;
 
 namespace Portkit.Net
 {
-    public class HttpClient : System.Net.Http.HttpClient
+    public class ExtendedHttpClient : HttpClient
     {
         private readonly ICache<string, HttpResponseMessage> _cache;
 
-        public HttpClient(ICache<string, HttpResponseMessage> cache)
+        public ExtendedHttpClient(ICache<string, HttpResponseMessage> cache)
         {
             _cache = cache;
         }
 
-        public HttpClient() :
+        public ExtendedHttpClient() :
             this(new HttpCache(ApplicationData.Current.LocalCacheFolder))
         {
 
