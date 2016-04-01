@@ -12,7 +12,7 @@
     <description>Portkit.Net is an implementation collection of network and http design patterns.</description>
     <summary>Portkit provides a collection of design patterns, reusable components and tools.</summary>    
     <language>en-US</language>
-    <tags>portkit net http query uwp</tags>
+    <tags>portkit net http query httpclient cachefirst cache first uwp</tags>
   </metadata>
   <files>
     <file src="..\..\Source\Portkit.Net.UWP\bin\Release\Portkit.*" target="lib\uap10.0\" exclude="**\*.pdb" />
