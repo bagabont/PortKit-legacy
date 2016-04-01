@@ -19,7 +19,7 @@ namespace Portkit.Extensions
         {
             if (propertyExpression == null)
             {
-                throw new ArgumentNullException("propertyExpression");
+                throw new ArgumentNullException(nameof(propertyExpression));
             }
             var body = propertyExpression.Body as MemberExpression;
             if (body == null)

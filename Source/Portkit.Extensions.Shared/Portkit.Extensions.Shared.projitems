@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DateTimeEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EnumerableEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExpressionEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GenericEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GroupedEnumerable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObservableCollectionEx.cs" />
