@@ -109,8 +109,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Portkit.Authorization.UWP.rd.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Portkit.Extensions.UWP\Portkit.Extensions.UWP.csproj">
+      <Project>{82e95620-7e04-4ac7-9cb4-2c0e33a260a2}</Project>
+      <Name>Portkit.Extensions.UWP</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\Portkit.Authorization.Shared\Portkit.Authorization.projitems" Label="Shared" />
-  <Import Project="..\Portkit.Utils.Shared\Portkit.Utils.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

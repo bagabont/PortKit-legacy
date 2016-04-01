@@ -29,7 +29,11 @@ namespace Portkit.Authorization
         /// <typeparam name="TProvider">Type of <see cref="ISessionProvider"/> to be used for authorization.</typeparam>
         public async Task LoginAsync<TProvider>() where TProvider : ISessionProvider
         {
-            Provider = _providers.OfType<TProvider>().First();
+            Provider = _providers.OfType<TProvider>().FirstOrDefault();
+            if (Provider == null)
+            {
+                throw new ArgumentException($"Cannot find provider of type {typeof(TProvider)}", nameof(TProvider));
+            }
             await Provider.LoginAsync();
         }
 

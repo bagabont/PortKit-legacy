@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Portkit.Extensions;
 
 namespace Portkit.Authorization
 {

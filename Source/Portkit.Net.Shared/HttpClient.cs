@@ -3,7 +3,9 @@ using System.Net;
 using System.Net.Http;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Portkit.Cache;
+using Portkit.Extensions;
 
 namespace Portkit.Net
 {
@@ -14,6 +16,12 @@ namespace Portkit.Net
         public HttpClient(ICache<string, HttpResponseMessage> cache)
         {
             _cache = cache;
+        }
+
+        public HttpClient() :
+            this(new HttpCache(ApplicationData.Current.LocalCacheFolder))
+        {
+
         }
 
         public IObservable<HttpResponseMessage> GetCacheFirst(string requestUrl)

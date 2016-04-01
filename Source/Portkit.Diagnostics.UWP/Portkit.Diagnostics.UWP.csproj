@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{974AE643-AEB6-4118-8CD5-ECFC6008484D}</ProjectGuid>
+    <ProjectGuid>{2F7C5BFD-2419-4094-ABED-268B3AF5B8C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Portkit.Net</RootNamespace>
-    <AssemblyName>Portkit.Net.UWP</AssemblyName>
+    <RootNamespace>Portkit.Diagnostics</RootNamespace>
+    <AssemblyName>Portkit.Diagnostics.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
@@ -107,16 +107,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Portkit.Net.rd.xml" />
+    <EmbeddedResource Include="Properties\Portkit.Diagnostics.UWP.rd.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Portkit.Extensions.UWP\Portkit.Extensions.UWP.csproj">
-      <Project>{82e95620-7e04-4ac7-9cb4-2c0e33a260a2}</Project>
-      <Name>Portkit.Extensions.UWP</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="..\Portkit.Net.Shared\Portkit.Net.Shared.projitems" Label="Shared" />
-  <Import Project="..\Portkit.Cache\Portkit.Cache.projitems" Label="Shared" />
+  <Import Project="..\Portkit.Diagnostics.Shared\Portkit.Diagnostics.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
