@@ -31,12 +31,44 @@ namespace Portkit.Extensions
         }
 
         /// <summary>
-        /// Determines weather a sequence is null or has no elements.
+        /// Check if a sequence is null or contains no elements.
         /// </summary>
-        /// <returns>True if sequence is null or there are no elements, otherwise returns false.</returns>
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> data)
+        /// <typeparam name="T">Type of sequence elements.</typeparam>
+        /// <param name="source">The source enumerable.</param>
+        /// <returns>
+        ///     <c>true</c> if the IEnumerable is null or empty; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
         {
-            return data?.Any() == null;
+            if (source == null)
+            {
+                return true;
+            }
+            /* If this is a list, use the Count property. 
+             * The Count property is O(1) while IEnumerable.Count() is O(N). */
+            var collection = source as ICollection<T>;
+            if (collection != null)
+            {
+                return collection.Count < 1;
+            }
+            return source.Any();
+        }
+
+        /// <summary>
+        /// Checks if a collection is null or contains no elements.
+        /// </summary>
+        /// <typeparam name="T">Type of collection elements.</typeparam>
+        /// <param name="source">The source collection.</param>
+        /// <returns>
+        ///     <c>true</c> if the collection is null or empty; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsNullOrEmpty<T>(this ICollection<T> source)
+        {
+            if (source == null)
+            {
+                return true;
+            }
+            return source.Count < 1;
         }
 
         /// <summary>
