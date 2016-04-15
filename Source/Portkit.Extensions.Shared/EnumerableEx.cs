@@ -21,6 +21,8 @@ namespace Portkit.Extensions
             return weightedValueSum / weightSum;
         }
 
+#if WINDOWS_UWP
+
         /// <summary>
         /// Casts the object using generic methods.
         /// </summary>
@@ -29,6 +31,7 @@ namespace Portkit.Extensions
             var method = typeof(Enumerable).GetMethod("Cast").MakeGenericMethod(elementType);
             return method.Invoke(null, new object[] { series }) as IEnumerable;
         }
+#endif
 
         /// <summary>
         /// Check if a sequence is null or contains no elements.

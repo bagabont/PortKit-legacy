@@ -4,8 +4,8 @@ using System.Net.Http;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
-using Portkit.Cache;
 using Portkit.Extensions;
+using Portkit.Net.Cache;
 
 namespace Portkit.Net
 {
@@ -21,7 +21,6 @@ namespace Portkit.Net
         public ExtendedHttpClient() :
             this(new HttpCache(ApplicationData.Current.LocalCacheFolder))
         {
-
         }
 
         public IObservable<HttpResponseMessage> GetCacheFirst(string requestUrl)

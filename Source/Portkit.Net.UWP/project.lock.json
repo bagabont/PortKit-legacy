@@ -268,7 +268,7 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Portkit.Extensions/1.0.0.2": {
+      "Portkit.Extensions/1.0.0.3": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Portkit.Extensions.UWP.dll": {}
@@ -2210,7 +2210,7 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Portkit.Extensions/1.0.0.2": {
+      "Portkit.Extensions/1.0.0.3": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Portkit.Extensions.UWP.dll": {}
@@ -4002,7 +4002,7 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Portkit.Extensions/1.0.0.2": {
+      "Portkit.Extensions/1.0.0.3": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Portkit.Extensions.UWP.dll": {}
@@ -5792,7 +5792,7 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Portkit.Extensions/1.0.0.2": {
+      "Portkit.Extensions/1.0.0.3": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Portkit.Extensions.UWP.dll": {}
@@ -7584,7 +7584,7 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Portkit.Extensions/1.0.0.2": {
+      "Portkit.Extensions/1.0.0.3": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Portkit.Extensions.UWP.dll": {}
@@ -9374,7 +9374,7 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Portkit.Extensions/1.0.0.2": {
+      "Portkit.Extensions/1.0.0.3": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Portkit.Extensions.UWP.dll": {}
@@ -11166,7 +11166,7 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Portkit.Extensions/1.0.0.2": {
+      "Portkit.Extensions/1.0.0.3": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Portkit.Extensions.UWP.dll": {}
@@ -12848,7 +12848,7 @@
       ]
     },
     "Microsoft.NETCore.Runtime.CoreCLR-arm/1.0.0": {
-      "sha512": "vUQyaKbHCa7BJAAzdfCP2FfBYOSt0YnDw7VMJLmD1/k68HIJgw1QO7GAfHhqoa39zkkvimC47QBH27wG4C5OGQ==",
+      "sha512": "hoJfIl981eXwn9Tz8onO/J1xaYApIfp/YrhjSh9rRhml1U5Wj80LBgyp/6n+KI3VlvcAraThhnHnCTp+M3Uh+w==",
       "type": "package",
       "files": [
         "Microsoft.NETCore.Runtime.CoreCLR-arm.1.0.0.nupkg.sha512",
@@ -13343,11 +13343,11 @@
         "ref/xamarinmac20/_._"
       ]
     },
-    "Portkit.Extensions/1.0.0.2": {
-      "sha512": "N2ZPEAtEfNmKyQdhQtOC3vzisDpVuSY8eULePgqaez7aPPu+pw6Ga1FROdogZcJeoNDld4IziHrHeWZU2/qbHw==",
+    "Portkit.Extensions/1.0.0.3": {
+      "sha512": "t75osnxRAKOEzuHmOKjMIaYuJm5hfwbl4hc2AnEejBOePBm7L7aSkSGNdG4bWEwCSNd67bTq2mWd9wLPLR0iWQ==",
       "type": "package",
       "files": [
-        "Portkit.Extensions.1.0.0.2.nupkg.sha512",
+        "Portkit.Extensions.1.0.0.3.nupkg.sha512",
         "Portkit.Extensions.nuspec",
         "lib/uap10.0/Portkit.Extensions.UWP.dll",
         "lib/uap10.0/Portkit.Extensions.UWP.pri"
@@ -16182,7 +16182,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
-      "Portkit.Extensions >= 1.0.0.2",
+      "Portkit.Extensions >= 1.0.0.3",
       "Rx-Main >= 2.2.5"
     ],
     "UAP,Version=v10.0": []

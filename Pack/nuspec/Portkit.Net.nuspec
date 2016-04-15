@@ -14,7 +14,7 @@
     <language>en-US</language>
     <tags>portkit net http query httpclient cachefirst cache first uwp</tags>
 	<dependencies> 
-		<dependency id="Portkit.Extensions" version="1.0.0.2" />   
+		<dependency id="Portkit.Extensions" version="1.0.0.3" />   
 	</dependencies>
   </metadata>
   <files>

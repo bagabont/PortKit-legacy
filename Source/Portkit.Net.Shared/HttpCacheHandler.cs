@@ -3,8 +3,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Portkit.Cache;
 using Portkit.Extensions;
+using Portkit.Net.Cache;
 
 namespace Portkit.Net
 {

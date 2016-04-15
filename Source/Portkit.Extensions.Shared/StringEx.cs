@@ -33,7 +33,7 @@ namespace Portkit.Extensions
         /// <returns>A System.Boolean value that is true if the string was well-formed; else false</returns>
         public static bool IsWellFormedUri(this string source, UriKind uriKind)
         {
-            return !string.IsNullOrWhiteSpace(source) && Uri.IsWellFormedUriString(source, UriKind.RelativeOrAbsolute);
+            return !string.IsNullOrWhiteSpace(source) && Uri.IsWellFormedUriString(source, uriKind);
         }
 
         /// <summary>
