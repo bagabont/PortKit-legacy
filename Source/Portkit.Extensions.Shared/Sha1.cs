@@ -238,7 +238,9 @@ namespace Portkit.Extensions
             int paddingSize = (56 - (int)(total % MESSAGE_BLOCK_SIZE));
 
             if (paddingSize < 1)
+            {
                 paddingSize += MESSAGE_BLOCK_SIZE;
+            }
 
             int length = count + paddingSize + 8;
             byte[] buff = (length == 64) ? _messageBuffer : new byte[length];
