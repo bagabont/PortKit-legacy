@@ -311,62 +311,6 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Rx-Core/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        }
-      },
-      "Rx-Interfaces/2.2.5": {
-        "type": "package",
-        "compile": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        }
-      },
-      "Rx-Linq/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        }
-      },
-      "Rx-Main/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5",
-          "Rx-Linq": "2.2.5",
-          "Rx-PlatformServices": "2.2.5"
-        }
-      },
-      "Rx-PlatformServices/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        }
-      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -1306,6 +1250,138 @@
             "assetType": "runtime",
             "rid": "win7"
           }
+        }
+      },
+      "System.Reactive/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reactive.Linq": "3.0.0",
+          "System.Reactive.PlatformServices": "3.0.0",
+          "System.Reactive.Windows.Threading": "3.0.0",
+          "System.Reactive.WindowsRuntime": "3.0.0"
+        }
+      },
+      "System.Reactive.Core/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        }
+      },
+      "System.Reactive.Interfaces/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        }
+      },
+      "System.Reactive.Linq/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        }
+      },
+      "System.Reactive.PlatformServices/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        }
+      },
+      "System.Reactive.Windows.Threading/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        }
+      },
+      "System.Reactive.WindowsRuntime/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Linq": "3.0.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.WindowsRuntime": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
         }
       },
       "System.Reflection/4.1.0": {
@@ -2761,62 +2837,6 @@
           "runtimes/win8-arm/native/clrcompression.dll": {}
         }
       },
-      "Rx-Core/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        }
-      },
-      "Rx-Interfaces/2.2.5": {
-        "type": "package",
-        "compile": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        }
-      },
-      "Rx-Linq/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        }
-      },
-      "Rx-Main/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5",
-          "Rx-Linq": "2.2.5",
-          "Rx-PlatformServices": "2.2.5"
-        }
-      },
-      "Rx-PlatformServices/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        }
-      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -3667,6 +3687,138 @@
         },
         "compile": {
           "ref/netstandard/_._": {}
+        }
+      },
+      "System.Reactive/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reactive.Linq": "3.0.0",
+          "System.Reactive.PlatformServices": "3.0.0",
+          "System.Reactive.Windows.Threading": "3.0.0",
+          "System.Reactive.WindowsRuntime": "3.0.0"
+        }
+      },
+      "System.Reactive.Core/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        }
+      },
+      "System.Reactive.Interfaces/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        }
+      },
+      "System.Reactive.Linq/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        }
+      },
+      "System.Reactive.PlatformServices/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        }
+      },
+      "System.Reactive.Windows.Threading/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        }
+      },
+      "System.Reactive.WindowsRuntime/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Linq": "3.0.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.WindowsRuntime": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
         }
       },
       "System.Reflection/4.1.0": {
@@ -5104,62 +5256,6 @@
           "runtimes/win8-arm-aot/native/_._": {}
         }
       },
-      "Rx-Core/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        }
-      },
-      "Rx-Interfaces/2.2.5": {
-        "type": "package",
-        "compile": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        }
-      },
-      "Rx-Linq/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        }
-      },
-      "Rx-Main/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5",
-          "Rx-Linq": "2.2.5",
-          "Rx-PlatformServices": "2.2.5"
-        }
-      },
-      "Rx-PlatformServices/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        }
-      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -6010,6 +6106,138 @@
         },
         "compile": {
           "ref/netstandard/_._": {}
+        }
+      },
+      "System.Reactive/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reactive.Linq": "3.0.0",
+          "System.Reactive.PlatformServices": "3.0.0",
+          "System.Reactive.Windows.Threading": "3.0.0",
+          "System.Reactive.WindowsRuntime": "3.0.0"
+        }
+      },
+      "System.Reactive.Core/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        }
+      },
+      "System.Reactive.Interfaces/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        }
+      },
+      "System.Reactive.Linq/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        }
+      },
+      "System.Reactive.PlatformServices/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        }
+      },
+      "System.Reactive.Windows.Threading/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        }
+      },
+      "System.Reactive.WindowsRuntime/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Linq": "3.0.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.WindowsRuntime": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
         }
       },
       "System.Reflection/4.1.0": {
@@ -7417,62 +7645,6 @@
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "Rx-Core/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        }
-      },
-      "Rx-Interfaces/2.2.5": {
-        "type": "package",
-        "compile": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        }
-      },
-      "Rx-Linq/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        }
-      },
-      "Rx-Main/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5",
-          "Rx-Linq": "2.2.5",
-          "Rx-PlatformServices": "2.2.5"
-        }
-      },
-      "Rx-PlatformServices/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        }
-      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -8323,6 +8495,138 @@
         },
         "compile": {
           "ref/netstandard/_._": {}
+        }
+      },
+      "System.Reactive/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reactive.Linq": "3.0.0",
+          "System.Reactive.PlatformServices": "3.0.0",
+          "System.Reactive.Windows.Threading": "3.0.0",
+          "System.Reactive.WindowsRuntime": "3.0.0"
+        }
+      },
+      "System.Reactive.Core/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        }
+      },
+      "System.Reactive.Interfaces/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        }
+      },
+      "System.Reactive.Linq/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        }
+      },
+      "System.Reactive.PlatformServices/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        }
+      },
+      "System.Reactive.Windows.Threading/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        }
+      },
+      "System.Reactive.WindowsRuntime/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Linq": "3.0.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.WindowsRuntime": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
         }
       },
       "System.Reflection/4.1.0": {
@@ -9769,62 +10073,6 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "Rx-Core/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        }
-      },
-      "Rx-Interfaces/2.2.5": {
-        "type": "package",
-        "compile": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        }
-      },
-      "Rx-Linq/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        }
-      },
-      "Rx-Main/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5",
-          "Rx-Linq": "2.2.5",
-          "Rx-PlatformServices": "2.2.5"
-        }
-      },
-      "Rx-PlatformServices/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        }
-      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -10675,6 +10923,138 @@
         },
         "compile": {
           "ref/netstandard/_._": {}
+        }
+      },
+      "System.Reactive/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reactive.Linq": "3.0.0",
+          "System.Reactive.PlatformServices": "3.0.0",
+          "System.Reactive.Windows.Threading": "3.0.0",
+          "System.Reactive.WindowsRuntime": "3.0.0"
+        }
+      },
+      "System.Reactive.Core/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        }
+      },
+      "System.Reactive.Interfaces/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        }
+      },
+      "System.Reactive.Linq/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        }
+      },
+      "System.Reactive.PlatformServices/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        }
+      },
+      "System.Reactive.Windows.Threading/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        }
+      },
+      "System.Reactive.WindowsRuntime/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Linq": "3.0.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.WindowsRuntime": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
         }
       },
       "System.Reflection/4.1.0": {
@@ -12082,62 +12462,6 @@
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "Rx-Core/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        }
-      },
-      "Rx-Interfaces/2.2.5": {
-        "type": "package",
-        "compile": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        }
-      },
-      "Rx-Linq/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        }
-      },
-      "Rx-Main/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5",
-          "Rx-Linq": "2.2.5",
-          "Rx-PlatformServices": "2.2.5"
-        }
-      },
-      "Rx-PlatformServices/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        }
-      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -12988,6 +13312,138 @@
         },
         "compile": {
           "ref/netstandard/_._": {}
+        }
+      },
+      "System.Reactive/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reactive.Linq": "3.0.0",
+          "System.Reactive.PlatformServices": "3.0.0",
+          "System.Reactive.Windows.Threading": "3.0.0",
+          "System.Reactive.WindowsRuntime": "3.0.0"
+        }
+      },
+      "System.Reactive.Core/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        }
+      },
+      "System.Reactive.Interfaces/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        }
+      },
+      "System.Reactive.Linq/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        }
+      },
+      "System.Reactive.PlatformServices/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        }
+      },
+      "System.Reactive.Windows.Threading/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        }
+      },
+      "System.Reactive.WindowsRuntime/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Linq": "3.0.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.WindowsRuntime": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
         }
       },
       "System.Reflection/4.1.0": {
@@ -14434,62 +14890,6 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "Rx-Core/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Core.dll": {}
-        }
-      },
-      "Rx-Interfaces/2.2.5": {
-        "type": "package",
-        "compile": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Interfaces.dll": {}
-        }
-      },
-      "Rx-Linq/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.Linq.dll": {}
-        }
-      },
-      "Rx-Main/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5",
-          "Rx-Linq": "2.2.5",
-          "Rx-PlatformServices": "2.2.5"
-        }
-      },
-      "Rx-PlatformServices/2.2.5": {
-        "type": "package",
-        "dependencies": {
-          "Rx-Core": "2.2.5",
-          "Rx-Interfaces": "2.2.5"
-        },
-        "compile": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        },
-        "runtime": {
-          "lib/windows8/System.Reactive.PlatformServices.dll": {}
-        }
-      },
       "System.AppContext/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -15340,6 +15740,138 @@
         },
         "compile": {
           "ref/netstandard/_._": {}
+        }
+      },
+      "System.Reactive/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reactive.Linq": "3.0.0",
+          "System.Reactive.PlatformServices": "3.0.0",
+          "System.Reactive.Windows.Threading": "3.0.0",
+          "System.Reactive.WindowsRuntime": "3.0.0"
+        }
+      },
+      "System.Reactive.Core/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Core.dll": {}
+        }
+      },
+      "System.Reactive.Interfaces/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.Reactive.Interfaces.dll": {}
+        }
+      },
+      "System.Reactive.Linq/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reactive.Linq.dll": {}
+        }
+      },
+      "System.Reactive.PlatformServices/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reactive.Interfaces": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.PlatformServices.dll": {}
+        }
+      },
+      "System.Reactive.Windows.Threading/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Reactive.Core": "3.0.0",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.InteropServices.WindowsRuntime": "4.0.1",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.Windows.Threading.dll": {}
+        }
+      },
+      "System.Reactive.WindowsRuntime/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Reactive.Linq": "3.0.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.WindowsRuntime": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/System.Reactive.WindowsRuntime.dll": {}
         }
       },
       "System.Reflection/4.1.0": {
@@ -17374,136 +17906,6 @@
         "runtime.win8-arm.runtime.native.System.IO.Compression.4.0.1.nupkg.sha512",
         "runtime.win8-arm.runtime.native.System.IO.Compression.nuspec",
         "runtimes/win8-arm/native/clrcompression.dll"
-      ]
-    },
-    "Rx-Core/2.2.5": {
-      "sha512": "DfWVTfW6tvRkkqpnRHKxPIvaRZyDJGADuqrE6J2nwejOQbLRWi0rNUwXkViDWz++25BGDy3iRE5OE6Dv8mJxYQ==",
-      "type": "Package",
-      "files": [
-        "Rx-Core.nuspec",
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "lib/net40/System.Reactive.Core.XML",
-        "lib/net40/System.Reactive.Core.dll",
-        "lib/net45/System.Reactive.Core.XML",
-        "lib/net45/System.Reactive.Core.dll",
-        "lib/portable-net40+sl5+win8+wp8/System.Reactive.Core.XML",
-        "lib/portable-net40+sl5+win8+wp8/System.Reactive.Core.dll",
-        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.Core.XML",
-        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.Core.dll",
-        "lib/portable-win81+wpa81/System.Reactive.Core.XML",
-        "lib/portable-win81+wpa81/System.Reactive.Core.dll",
-        "lib/portable-windows8+net45+wp8/System.Reactive.Core.XML",
-        "lib/portable-windows8+net45+wp8/System.Reactive.Core.dll",
-        "lib/sl5/System.Reactive.Core.XML",
-        "lib/sl5/System.Reactive.Core.dll",
-        "lib/windows8/System.Reactive.Core.XML",
-        "lib/windows8/System.Reactive.Core.dll",
-        "lib/windowsphone71/System.Reactive.Core.XML",
-        "lib/windowsphone71/System.Reactive.Core.dll",
-        "lib/windowsphone8/System.Reactive.Core.XML",
-        "lib/windowsphone8/System.Reactive.Core.dll",
-        "package/services/metadata/core-properties/acd70acf6eca4cb38c21c68005176d93.psmdcp"
-      ]
-    },
-    "Rx-Interfaces/2.2.5": {
-      "sha512": "FKtG2QfMIeUcfB7r3a89VoAiszX3DTvYETkpC6U0FzWpxRK/mcHyzYOsniDfag+NsDG0P1k1c8yNSefXKp3t2A==",
-      "type": "Package",
-      "files": [
-        "Rx-Interfaces.nuspec",
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "lib/net40/System.Reactive.Interfaces.XML",
-        "lib/net40/System.Reactive.Interfaces.dll",
-        "lib/net45/System.Reactive.Interfaces.XML",
-        "lib/net45/System.Reactive.Interfaces.dll",
-        "lib/portable-net40+sl5+win8+wp8/System.Reactive.Interfaces.XML",
-        "lib/portable-net40+sl5+win8+wp8/System.Reactive.Interfaces.dll",
-        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.Interfaces.XML",
-        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.Interfaces.dll",
-        "lib/portable-win81+wpa81/System.Reactive.Interfaces.XML",
-        "lib/portable-win81+wpa81/System.Reactive.Interfaces.dll",
-        "lib/portable-windows8+net45+wp8/System.Reactive.Interfaces.XML",
-        "lib/portable-windows8+net45+wp8/System.Reactive.Interfaces.dll",
-        "lib/sl5/System.Reactive.Interfaces.XML",
-        "lib/sl5/System.Reactive.Interfaces.dll",
-        "lib/windows8/System.Reactive.Interfaces.XML",
-        "lib/windows8/System.Reactive.Interfaces.dll",
-        "lib/windowsphone71/System.Reactive.Interfaces.XML",
-        "lib/windowsphone71/System.Reactive.Interfaces.dll",
-        "lib/windowsphone8/System.Reactive.Interfaces.XML",
-        "lib/windowsphone8/System.Reactive.Interfaces.dll",
-        "package/services/metadata/core-properties/c34c0935638f4b7ea6c51ca968fd1a88.psmdcp"
-      ]
-    },
-    "Rx-Linq/2.2.5": {
-      "sha512": "UTeCIu3cWPExxmTzdiVq7SalqTBhUaomBTaAC9LpYPoAopjlFwA3hjVWXoLkGlDc/44wqJemJuEwFP00KphiFg==",
-      "type": "Package",
-      "files": [
-        "Rx-Linq.nuspec",
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "lib/net40/System.Reactive.Linq.XML",
-        "lib/net40/System.Reactive.Linq.dll",
-        "lib/net45/System.Reactive.Linq.XML",
-        "lib/net45/System.Reactive.Linq.dll",
-        "lib/portable-net40+sl5+win8+wp8/System.Reactive.Linq.XML",
-        "lib/portable-net40+sl5+win8+wp8/System.Reactive.Linq.dll",
-        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.Linq.XML",
-        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.Linq.dll",
-        "lib/portable-win81+wpa81/System.Reactive.Linq.XML",
-        "lib/portable-win81+wpa81/System.Reactive.Linq.dll",
-        "lib/portable-windows8+net45+wp8/System.Reactive.Linq.XML",
-        "lib/portable-windows8+net45+wp8/System.Reactive.Linq.dll",
-        "lib/sl5/System.Reactive.Linq.XML",
-        "lib/sl5/System.Reactive.Linq.dll",
-        "lib/windows8/System.Reactive.Linq.XML",
-        "lib/windows8/System.Reactive.Linq.dll",
-        "lib/windowsphone71/System.Reactive.Linq.XML",
-        "lib/windowsphone71/System.Reactive.Linq.dll",
-        "lib/windowsphone8/System.Reactive.Linq.XML",
-        "lib/windowsphone8/System.Reactive.Linq.dll",
-        "package/services/metadata/core-properties/0b05bef9a8e34a3da5e4d5d41f320ee4.psmdcp"
-      ]
-    },
-    "Rx-Main/2.2.5": {
-      "sha512": "qdQ6qENEiLsp/LRdzZlLlodihWN8VDjwNfWa8c2ELjEHZgTdKzt1V4i61gkHVtFKZXe8Px6KupbMP3pZ+1tusQ==",
-      "type": "Package",
-      "files": [
-        "Rx-Main.nuspec",
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "package/services/metadata/core-properties/42be7976390b4c6f82065a7d2c011282.psmdcp"
-      ]
-    },
-    "Rx-PlatformServices/2.2.5": {
-      "sha512": "pMnNEvJVjT+wuDib+W/bi5hhIYcre7dW5yxvKrJxnR4iKJ1VLA/dY2FTtjDriHGx7OeGn12lQewXlH2oHiWFPA==",
-      "type": "Package",
-      "files": [
-        "Rx-PlatformServices.nuspec",
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "lib/net40/System.Reactive.PlatformServices.XML",
-        "lib/net40/System.Reactive.PlatformServices.dll",
-        "lib/net45/System.Reactive.PlatformServices.XML",
-        "lib/net45/System.Reactive.PlatformServices.dll",
-        "lib/portable-net40+sl5+win8+wp8/System.Reactive.PlatformServices.XML",
-        "lib/portable-net40+sl5+win8+wp8/System.Reactive.PlatformServices.dll",
-        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.PlatformServices.XML",
-        "lib/portable-net45+winrt45+wp8+wpa81/System.Reactive.PlatformServices.dll",
-        "lib/portable-win81+wpa81/System.Reactive.PlatformServices.XML",
-        "lib/portable-win81+wpa81/System.Reactive.PlatformServices.dll",
-        "lib/portable-windows8+net45+wp8/System.Reactive.PlatformServices.XML",
-        "lib/portable-windows8+net45+wp8/System.Reactive.PlatformServices.dll",
-        "lib/sl5/System.Reactive.PlatformServices.XML",
-        "lib/sl5/System.Reactive.PlatformServices.dll",
-        "lib/windows8/System.Reactive.PlatformServices.XML",
-        "lib/windows8/System.Reactive.PlatformServices.dll",
-        "lib/windowsphone71/System.Reactive.PlatformServices.XML",
-        "lib/windowsphone71/System.Reactive.PlatformServices.dll",
-        "lib/windowsphone8/System.Reactive.PlatformServices.XML",
-        "lib/windowsphone8/System.Reactive.PlatformServices.dll",
-        "package/services/metadata/core-properties/5087526007294f7d8e78a6a4a61c494a.psmdcp"
       ]
     },
     "System.AppContext/4.1.0": {
@@ -19813,6 +20215,124 @@
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard/_._"
+      ]
+    },
+    "System.Reactive/3.0.0": {
+      "sha512": "W7fymxyUWjdbLiq257mCaiha1WfmShgXK8jwFuD9vMT4/HWLqDSvcpePGbkLogF3Rlc/sH6xTalNVj4nOVkk0g==",
+      "type": "package",
+      "files": [
+        "System.Reactive.3.0.0.nupkg.sha512",
+        "System.Reactive.nuspec"
+      ]
+    },
+    "System.Reactive.Core/3.0.0": {
+      "sha512": "1mnBTTNzTDaKYu2fYA0fcbWmWspwXheV9eFR0ynWd0nFjBwgSW0ZUAxe7dfvU5imv+K9QlfhV+pEKGOlJVZ8+w==",
+      "type": "package",
+      "files": [
+        "System.Reactive.Core.3.0.0.nupkg.sha512",
+        "System.Reactive.Core.nuspec",
+        "lib/net45/System.Reactive.Core.dll",
+        "lib/net45/System.Reactive.Core.xml",
+        "lib/net46/System.Reactive.Core.dll",
+        "lib/net46/System.Reactive.Core.xml",
+        "lib/netcore451/System.Reactive.Core.dll",
+        "lib/netcore451/System.Reactive.Core.xml",
+        "lib/netcoreapp1.0/System.Reactive.Core.dll",
+        "lib/netcoreapp1.0/System.Reactive.Core.xml",
+        "lib/netstandard1.0/System.Reactive.Core.dll",
+        "lib/netstandard1.0/System.Reactive.Core.xml",
+        "lib/netstandard1.1/System.Reactive.Core.dll",
+        "lib/netstandard1.1/System.Reactive.Core.xml",
+        "lib/netstandard1.3/System.Reactive.Core.dll",
+        "lib/netstandard1.3/System.Reactive.Core.xml",
+        "lib/uap10.0/System.Reactive.Core.dll",
+        "lib/uap10.0/System.Reactive.Core.xml",
+        "lib/wpa81/System.Reactive.Core.dll",
+        "lib/wpa81/System.Reactive.Core.xml"
+      ]
+    },
+    "System.Reactive.Interfaces/3.0.0": {
+      "sha512": "MuLvWYegIrhvUVe3MRMIBxFGx4kiz0FEzN3TTvhX+m3WmJCi5+OE4J7yPWtZjGGTUh5wysGyaF9thcnCzx/J3w==",
+      "type": "package",
+      "files": [
+        "System.Reactive.Interfaces.3.0.0.nupkg.sha512",
+        "System.Reactive.Interfaces.nuspec",
+        "lib/net45/System.Reactive.Interfaces.dll",
+        "lib/net45/System.Reactive.Interfaces.xml",
+        "lib/netstandard1.0/System.Reactive.Interfaces.dll",
+        "lib/netstandard1.0/System.Reactive.Interfaces.xml"
+      ]
+    },
+    "System.Reactive.Linq/3.0.0": {
+      "sha512": "CmQ+WpeOFzwYlDKafLQLT5McvR1TWCi3UudeBnajguvi/8ZGHDoQ2MPTo401EKkSvW48uTsJyvcKXN/C7g91Qg==",
+      "type": "package",
+      "files": [
+        "System.Reactive.Linq.3.0.0.nupkg.sha512",
+        "System.Reactive.Linq.nuspec",
+        "lib/net45/System.Reactive.Linq.dll",
+        "lib/net45/System.Reactive.Linq.xml",
+        "lib/net46/System.Reactive.Linq.dll",
+        "lib/net46/System.Reactive.Linq.xml",
+        "lib/netstandard1.0/System.Reactive.Linq.dll",
+        "lib/netstandard1.0/System.Reactive.Linq.xml",
+        "lib/netstandard1.1/System.Reactive.Linq.dll",
+        "lib/netstandard1.1/System.Reactive.Linq.xml",
+        "lib/netstandard1.3/System.Reactive.Linq.dll",
+        "lib/netstandard1.3/System.Reactive.Linq.xml"
+      ]
+    },
+    "System.Reactive.PlatformServices/3.0.0": {
+      "sha512": "1yYsCsIqrpu228er3iC1naLcCnIpdDRuyFhD78P6C54YyiR84ElDUjWYEMVneUKxrP6PlwrZp2VEf0DHAHX8gw==",
+      "type": "package",
+      "files": [
+        "System.Reactive.PlatformServices.3.0.0.nupkg.sha512",
+        "System.Reactive.PlatformServices.nuspec",
+        "lib/net45/System.Reactive.PlatformServices.dll",
+        "lib/net45/System.Reactive.PlatformServices.xml",
+        "lib/net46/System.Reactive.PlatformServices.dll",
+        "lib/net46/System.Reactive.PlatformServices.xml",
+        "lib/netcore451/System.Reactive.PlatformServices.dll",
+        "lib/netcore451/System.Reactive.PlatformServices.xml",
+        "lib/netcoreapp1.0/System.Reactive.PlatformServices.dll",
+        "lib/netcoreapp1.0/System.Reactive.PlatformServices.xml",
+        "lib/netstandard1.0/System.Reactive.PlatformServices.dll",
+        "lib/netstandard1.0/System.Reactive.PlatformServices.xml",
+        "lib/netstandard1.3/System.Reactive.PlatformServices.dll",
+        "lib/netstandard1.3/System.Reactive.PlatformServices.xml",
+        "lib/uap10.0/System.Reactive.PlatformServices.dll",
+        "lib/uap10.0/System.Reactive.PlatformServices.xml",
+        "lib/wpa81/System.Reactive.PlatformServices.dll",
+        "lib/wpa81/System.Reactive.PlatformServices.xml"
+      ]
+    },
+    "System.Reactive.Windows.Threading/3.0.0": {
+      "sha512": "+JJ1tyTpNUNt5CI6MZfOgU/l5WPz35bTUuCkkP6+KbeCeAhU045dJ2AbP7s7CPw34IWWi6hcafwihL/C0ej97w==",
+      "type": "package",
+      "files": [
+        "System.Reactive.Windows.Threading.3.0.0.nupkg.sha512",
+        "System.Reactive.Windows.Threading.nuspec",
+        "lib/net45/System.Reactive.Windows.Threading.dll",
+        "lib/net45/System.Reactive.Windows.Threading.xml",
+        "lib/netcore451/System.Reactive.Windows.Threading.dll",
+        "lib/netcore451/System.Reactive.Windows.Threading.xml",
+        "lib/uap10.0/System.Reactive.Windows.Threading.dll",
+        "lib/uap10.0/System.Reactive.Windows.Threading.xml",
+        "lib/wpa81/System.Reactive.Windows.Threading.dll",
+        "lib/wpa81/System.Reactive.Windows.Threading.xml"
+      ]
+    },
+    "System.Reactive.WindowsRuntime/3.0.0": {
+      "sha512": "Se5bDVa7mxQiFk9AtXu1wfo9vDn3JqsUaGxANxyoSLL31Knxqpk+vuRfF+iartlH2cd60Y24E7pO5ZIpKlcZsg==",
+      "type": "package",
+      "files": [
+        "System.Reactive.WindowsRuntime.3.0.0.nupkg.sha512",
+        "System.Reactive.WindowsRuntime.nuspec",
+        "lib/netcore451/System.Reactive.WindowsRuntime.dll",
+        "lib/netcore451/System.Reactive.WindowsRuntime.xml",
+        "lib/uap10.0/System.Reactive.WindowsRuntime.dll",
+        "lib/uap10.0/System.Reactive.WindowsRuntime.xml",
+        "lib/wpa81/System.Reactive.WindowsRuntime.dll",
+        "lib/wpa81/System.Reactive.WindowsRuntime.xml"
       ]
     },
     "System.Reflection/4.1.0": {
@@ -22315,7 +22835,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2",
-      "Rx-Main >= 2.2.5"
+      "System.Reactive >= 3.0.0"
     ],
     "UAP,Version=v10.0": []
   }

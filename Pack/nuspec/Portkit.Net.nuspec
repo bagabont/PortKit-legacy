@@ -13,6 +13,9 @@
     <summary>Portkit provides a collection of design patterns, reusable components and tools.</summary>    
     <language>en-US</language>
     <tags>portkit net http query httpclient cachefirst cache first uwp</tags>	
+	<dependencies>
+      <dependency id="System.Reactive" version="2.2.5" />     
+    </dependencies>
   </metadata>
   <files>
     <file src="..\..\Source\Portkit.Net\Portkit.Net.UWP\bin\Release\Portkit.*" target="lib\uap10.0\" exclude="**\*.pdb" />
