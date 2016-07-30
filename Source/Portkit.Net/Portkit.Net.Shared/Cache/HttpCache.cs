@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Storage;
 using System.IO;
-using Portkit.Extensions;
 
 namespace Portkit.Net.Cache
 {
@@ -83,7 +82,7 @@ namespace Portkit.Net.Cache
             try
             {
                 var file = await _cacheFolder.GetFileAsync(key);
-                if (!await file.CheckIsEmpty())
+                if (!await CheckIsEmptyAsync(file))
                 {
                     return await HttpCachedResponse.LoadResponseAsync(file);
                 }
@@ -122,7 +121,7 @@ namespace Portkit.Net.Cache
             try
             {
                 var fileAge = DateTime.UtcNow - file.DateCreated.ToUniversalTime();
-                if (fileAge > age || await file.CheckIsEmpty())
+                if (fileAge > age || await CheckIsEmptyAsync(file))
                 {
                     await file.DeleteAsync(StorageDeleteOption.PermanentDelete);
                 }
@@ -131,6 +130,16 @@ namespace Portkit.Net.Cache
             {
                 // Ignored
             }
+        }
+
+        private static async Task<bool> CheckIsEmptyAsync(IStorageItem item)
+        {
+            var props = await item.GetBasicPropertiesAsync();
+            if (props == null)
+            {
+                throw new IOException("Failed to retrieve basic item properties.");
+            }
+            return props.Size <= 0;
         }
 
 

@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HttpUtility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpValue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpValueCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)KeyUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
   </ItemGroup>
 </Project>

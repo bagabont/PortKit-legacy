@@ -3,8 +3,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Portkit.Extensions;
 using Portkit.Net.Cache;
+using Portkit.Net.Shared;
 
 namespace Portkit.Net
 {
@@ -36,7 +36,7 @@ namespace Portkit.Net
             {
                 return await base.SendAsync(request, ct);
             }
-            var cacheKey = request.RequestUri.OriginalString.GetSha1();
+            var cacheKey = KeyUtil.ComputeHash(request.RequestUri.OriginalString);
             var cachedResponse = await ConfigureHttpRequest(request, cacheKey);
             var serverResponse = await base.SendAsync(request, ct);
 

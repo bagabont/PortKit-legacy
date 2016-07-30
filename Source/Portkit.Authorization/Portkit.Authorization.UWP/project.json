@@ -1,8 +1,6 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "Portkit.Extensions": "1.0.0.3",
-    "Rx-Main": "2.2.5"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2"
   },
   "frameworks": {
     "uap10.0": {}

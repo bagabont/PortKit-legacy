@@ -4,8 +4,8 @@ using System.Net.Http;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
-using Portkit.Extensions;
 using Portkit.Net.Cache;
+using Portkit.Net.Shared;
 
 namespace Portkit.Net
 {
@@ -42,7 +42,7 @@ namespace Portkit.Net
         {
             try
             {
-                var cacheKey = request.RequestUri.OriginalString.GetSha1();
+                var cacheKey = KeyUtil.ComputeHash(request.RequestUri.OriginalString);
                 var cachedResponse = await _cache.GetAsync(cacheKey);
                 if (cachedResponse != null)
                 {

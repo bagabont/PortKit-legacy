@@ -15,6 +15,6 @@
     <tags>portkit authorization service authentication provider uwp</tags>
   </metadata>
   <files>
-    <file src="..\..\Source\Portkit.Authorization.UWP\bin\Release\Portkit.*" target="lib\uap10.0\" exclude="**\*.pdb" />
+    <file src="..\..\Source\Portkit.Authorization\Portkit.Authorization.UWP\bin\Release\Portkit.*" target="lib\uap10.0\" exclude="**\*.pdb" />
   </files>
 </package>

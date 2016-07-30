@@ -110,7 +110,7 @@
     <EmbeddedResource Include="Properties\Portkit.Authorization.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Portkit.Extensions.UWP\Portkit.Extensions.UWP.csproj">
+    <ProjectReference Include="..\..\Portkit.Extensions\Portkit.Extensions.UWP\Portkit.Extensions.UWP.csproj">
       <Project>{82e95620-7e04-4ac7-9cb4-2c0e33a260a2}</Project>
       <Name>Portkit.Extensions.UWP</Name>
     </ProjectReference>
