@@ -1,7 +1,8 @@
 ﻿using System;
 using Windows.Foundation.Collections;
+using Windows.Security.Cryptography;
+using Windows.Security.Cryptography.Core;
 using Windows.Storage;
-using Portkit.Extensions;
 
 namespace Portkit.Authorization
 {
@@ -53,7 +54,7 @@ namespace Portkit.Authorization
 
             // Serialize and encrypt the session, then save it
             var plainTextSession = _serializer.SerializeSession(session);
-            _store["session"] = plainTextSession.Encrypt(GetKey());
+            _store["session"] = Encrypt(plainTextSession, GetKey());
         }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace Portkit.Authorization
                 }
 
                 // Decrypt and deserialize session
-                var plainTextSession = cipherTextSession.Decrypt(GetKey());
+                var plainTextSession = Decrypt(cipherTextSession, GetKey());
                 return _serializer.DeserializeSession<TSession>(plainTextSession);
             }
             catch (Exception)
@@ -95,6 +96,40 @@ namespace Portkit.Authorization
 
             // Generate key by appending credentials to the default key.
             return $"{_securityKey}{credential?.Password ?? string.Empty}";
+        }
+
+        /// <summary>
+        /// Encrypts text string.
+        /// </summary>
+        /// <param name="plainText">Plain text to encrypt.</param>
+        /// <param name="key">Encryption key.</param>
+        /// <returns>Encrypted text string.</returns>
+        private static string Encrypt(string plainText, string key)
+        {
+            var keyHash = CryptographicBuffer.ConvertStringToBinary(key, BinaryStringEncoding.Utf8);
+            var plainBuffer = CryptographicBuffer.ConvertStringToBinary(plainText, BinaryStringEncoding.Utf8);
+            var aes = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesEcbPkcs7);
+            var symetricKey = aes.CreateSymmetricKey(keyHash);
+            var buffEncrypted = CryptographicEngine.Encrypt(symetricKey, plainBuffer, null);
+            var cipherText = CryptographicBuffer.EncodeToBase64String(buffEncrypted);
+            return cipherText;
+        }
+
+        /// <summary>
+        /// Decrypts text string.
+        /// </summary>
+        /// <param name="cipherText">Cipher text to decrypt.</param>
+        /// <param name="key">Encrypted key, used to encrypt the text string.</param>
+        /// <returns>Plain text string.</returns>
+        private static string Decrypt(string cipherText, string key)
+        {
+            var keyHash = CryptographicBuffer.ConvertStringToBinary(key, BinaryStringEncoding.Utf8);
+            var cipherBuffer = CryptographicBuffer.DecodeFromBase64String(cipherText);
+            var aes = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesEcbPkcs7);
+            var symetricKey = aes.CreateSymmetricKey(keyHash);
+            var buffDecrypted = CryptographicEngine.Decrypt(symetricKey, cipherBuffer, null);
+            string plainText = CryptographicBuffer.ConvertBinaryToString(BinaryStringEncoding.Utf8, buffDecrypted);
+            return plainText;
         }
     }
 }
