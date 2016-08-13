@@ -148,5 +148,30 @@ namespace Portkit.Extensions
             string plainText = CryptographicBuffer.ConvertBinaryToString(BinaryStringEncoding.Utf8, buffDecrypted);
             return plainText;
         }
+
+
+        /// <summary>
+        /// Converts to title case: each word starts with an upper case.
+        /// </summary>
+        /// <remarks>using System.Text;</remarks>
+        public static string ToTitleCase(this string value)
+        {
+            if (value == null)
+            {
+                return null;
+            }
+            if (value.Length == 0)
+            {
+                return value;
+            }
+
+            var builder = new StringBuilder(value);
+            builder[0] = char.ToUpper(builder[0]);
+            for (int i = 1; i < builder.Length; ++i)
+            {
+                builder[i] = char.IsWhiteSpace(builder[i - 1]) ? char.ToUpper(builder[i]) : char.ToLower(builder[i]);
+            }
+            return builder.ToString();
+        }
     }
 }
