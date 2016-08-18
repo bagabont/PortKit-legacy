@@ -135,14 +135,14 @@ namespace Portkit.Extensions
             }
             return true;
         }
-		
-		public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action)
-		{
-			foreach (var item in source)
-			{
-				action(item);
-			}
-			return source;
-		}
+
+        public static IEnumerable<T> Each<T>(this IEnumerable<T> source, Action<T> action)
+        {
+            foreach (var item in source)
+            {
+                action(item);
+            }
+            return source;
+        }
     }
 }
