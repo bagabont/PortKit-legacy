@@ -16,7 +16,7 @@ namespace Portkit.ComponentModel
         /// <summary>
         /// Enables or disables thread dispatching on <see cref="PropertyChanged"/>.
         /// </summary>
-        protected virtual bool EnableDispatching { get; set; } = true;
+        protected virtual bool DispatchPropertyChanges { get; set; } = true;
 
         /// <summary>
         /// Raised when a property of the object is changed.
@@ -44,7 +44,7 @@ namespace Portkit.ComponentModel
                 return;
             }
             var args = new PropertyChangedEventArgs(propertyName);
-            var dispatch = EnableDispatching && _dispatcher != null && !_dispatcher.HasThreadAccess;
+            var dispatch = DispatchPropertyChanges && _dispatcher != null && !_dispatcher.HasThreadAccess;
             if (dispatch)
             {
                 _dispatcher.Run(() => handler.Invoke(this, args));

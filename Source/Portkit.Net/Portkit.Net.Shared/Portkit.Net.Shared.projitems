@@ -12,7 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Cache\HttpCache.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cache\HttpCachedResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cache\ICache.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ExtendedHttpClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpCacheHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpUtility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HttpValue.cs" />
